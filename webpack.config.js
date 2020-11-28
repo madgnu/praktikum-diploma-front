@@ -8,8 +8,8 @@ const cssnano = require('cssnano');
 
 module.exports = {
   entry: {
-    index: './src/pages/index',
-    favorites: './src/pages/favorites',
+    index: './src/pages/index/index',
+    favorites: './src/pages/favorites/favorites',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -24,7 +24,12 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+        use: [{
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            publicPath: '/',
+          },
+        }, 'css-loader', 'postcss-loader'],
       },
       {
         test: /\.(png|jp?g|ico|svg)$/,
@@ -48,6 +53,10 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/i,
+        loader: 'file-loader?name=vendor/[name].[ext]',
+      },
     ],
   },
   plugins: [
@@ -56,16 +65,17 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       inject: false,
-      template: './src/pages/index.html',
+      template: './src/pages/index/index.html',
       filename: 'index.html',
+      chunks: ['index'],
     }),
     new HtmlWebpackPlugin({
       inject: false,
-      template: './src/pages/favorites.html',
+      template: './src/pages/favorites/favorites.html',
       filename: 'favorites.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
+      filename: 'css/style.[contenthash].css',
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,

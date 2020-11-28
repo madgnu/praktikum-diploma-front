@@ -6,7 +6,7 @@
   "scripts": {
     "test:lint": "eslint ./src --ext js",
     "build": "rimraf dist && cross-env NODE_ENV=production webpack --mode production",
-    "dev": "cross-env NODE_ENV=dev webpack-dev-server --mode development --open --watch",
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server --mode development --watch",
     "deploy": "gh-pages -d dist"
   },
   "repository": {

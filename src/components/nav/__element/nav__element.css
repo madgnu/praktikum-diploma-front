@@ -1,0 +1,13 @@
+.nav__element {
+  margin: 0 10px;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.nav__element:first-child {
+  margin-left: 0;
+}
+
+.nav__element:last-child {
+  margin-right: 0;
+}

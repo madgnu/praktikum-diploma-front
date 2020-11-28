@@ -1,0 +1,20 @@
+@import url('../../../vendor/fonts/roboto.css');
+
+.nav_fat .nav__link {
+  padding: 20px 0;
+}
+
+.nav__link {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+  margin: 0 20px;
+}
+
+.nav__link:first-child {
+  margin-left: 0;
+}
+
+.nav__link:last-child {
+  margin-right: 0;
+}

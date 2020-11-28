@@ -1,0 +1,7 @@
+.container_overhang {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
+}

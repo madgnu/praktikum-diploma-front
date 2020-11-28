@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="<%=require('../../assets/favicon.png') %>">
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.css %>">
+  <title>News Explorer</title>
+</head>
+<body class="root">
+  <div class="container container_overhang">
+    <header class="header">
+      <a class="header__logo" href="#">NewsExplorer</a>
+      <menu class="header__links nav nav_fat">
+        <a class="nav__link nav__link_active" href="#">Главная</a>
+        <a class="nav__link" href="#">Авторизация</a>
+      </menu>
+    </header>
+  </div>
+  <main class="root__content">
+    <section class="root__section root__section_theme_headliner" style="height: 576px;">
+    </section>
+  </main>
+  <footer class="root__footer container footer">
+    <span class="footer__copyright">&copy; 2020 Supersite, Powered by News API</span>
+    <div class="footer__links">
+      <ul class="nav">
+        <li class="nav__element"><a class="nav__link" href="/">Главная</a></li>
+        <li class="nav__element"><a class="nav__link" href="https://praktikum.yandex.ru/" target="_blank">Яндекс.Практикум</a></li>
+      </ul>
+      <ul class="nav">
+        <li class="nav__element"><a class="nav__link nav__link_icon_github" href="https://praktikum.yandex.ru/"></a></li>
+        <li class="nav__element"><a class="nav__link nav__link_icon_facebook" href="#"></a></li>
+      </ul>
+    </div>
+  </footer>
+  <script src="<%= htmlWebpackPlugin.files.js %>"></script>
+</body>
+</html>
