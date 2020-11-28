@@ -1,5 +1,5 @@
-.root__section {
+.root__headliner {
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
-  width: 100%;
 }

@@ -2,6 +2,7 @@
   margin: 0 10px;
   position: relative;
   vertical-align: baseline;
+  display: flex;
 }
 
 .nav__element:first-child {

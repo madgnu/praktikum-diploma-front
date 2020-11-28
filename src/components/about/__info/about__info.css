@@ -1,5 +1,5 @@
-.root__section {
+.about__info {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  margin: 50px;
 }

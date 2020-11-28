@@ -1,0 +1,11 @@
+.about__paragraph {
+  padding: 10px 0;
+}
+
+.about__paragraph:first-child {
+  padding-top: 0;
+}
+
+.about__paragraph:last-child {
+  padding-bottom: 0;
+}
