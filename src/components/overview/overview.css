@@ -1,3 +1,5 @@
+@import url('../../vendor/fonts/roboto.css');
+
 .overview {
-  font-family: Roboto;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }

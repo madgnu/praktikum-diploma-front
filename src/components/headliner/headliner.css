@@ -1,7 +1,9 @@
+@import url('../../vendor/fonts/roboto.css');
+
 .headliner {
   max-width: 600px;
   align-self: center;
-  font-family: Roboto;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
   color: white;
 }
 

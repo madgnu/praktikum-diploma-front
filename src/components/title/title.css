@@ -1,7 +1,7 @@
 @import url('../../vendor/fonts/robotoslab.css');
 
 .title {
-  font-family: Roboto Slab;
+  font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
   font-size: 60px;
   line-height: 64px;
   font-style: normal;

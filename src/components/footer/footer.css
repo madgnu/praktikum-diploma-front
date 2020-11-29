@@ -1,7 +1,9 @@
+@import url('../../vendor/fonts/roboto.css');
+
 .footer {
   display: flex;
   justify-content: space-between;
-  font-family: Roboto;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
 
 @media screen and (max-width: 640px) {

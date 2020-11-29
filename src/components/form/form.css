@@ -1,7 +1,7 @@
 @import url('../../vendor/fonts/inter.css');
 
 .form {
-  font-family: Inter;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 .form > * {

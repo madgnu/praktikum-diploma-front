@@ -1,5 +1,7 @@
+@import url('../../vendor/fonts/roboto.css');
+
 .button {
-  font-family: Roboto;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
   border-radius: 100px;
   border: none;
   background: #2F71E5;

@@ -1,8 +1,10 @@
+@import url('../../../vendor//fonts/robotoslab.css');
+
 .card__source {
   text-decoration: none;
   text-transform: uppercase;
   color: #B6BCBF;
-  font-family: Roboto Slab;
+  font-family: 'Roboto Slab', Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
