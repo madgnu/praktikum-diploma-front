@@ -1,0 +1,15 @@
+.card__toolbar {
+  display: flex;
+}
+
+.card__toolbar > * {
+  margin: 0 5px;
+}
+
+.card__toolbar > *:first-child {
+  margin-left: 0px;
+}
+
+.card__toolbar > *:last-child {
+  margin-right: 0px;
+}

@@ -1,0 +1,6 @@
+.button_style_transparent {
+  background-color: unset;
+  border: 1px solid;
+  border-color: inherit;
+  color: inherit;
+}

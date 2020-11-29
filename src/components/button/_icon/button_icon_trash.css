@@ -1,0 +1,10 @@
+.button_icon_trash::after {
+  content: ' ';
+  mask: url(./trash.svg);
+  mask-size: contain;
+  width: 1.5em;
+  height: 1.5em;
+  background-color: currentColor;
+  display: inline-block;
+  margin: 0 3px;
+}

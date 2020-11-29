@@ -1,0 +1,9 @@
+.button_icon_logout::after {
+  content: ' ';
+  mask: url(./logout.svg);
+  width: calc(1em * 1.2);
+  height: calc(1em * 1.2);
+  background-color: currentColor;
+  display: inline-block;
+  margin: auto 5px;
+}

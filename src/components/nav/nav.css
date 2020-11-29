@@ -1,5 +1,6 @@
 .nav {
   display: flex;
+  align-items: baseline;
   margin: 0;
   list-style-type: none;
   font-family: Roboto;

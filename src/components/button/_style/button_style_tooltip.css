@@ -1,0 +1,11 @@
+.button_style_tooltip {
+  border-radius: 10px;
+  border: none;
+  color: black;
+  background-color: white;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 10px;
+  height: 40px;
+}

@@ -12,8 +12,12 @@
     <header class="header">
       <a class="header__logo" href="#">NewsExplorer</a>
       <menu class="header__links nav nav_fat">
-        <li class="nav__element"><a class="nav__link nav__link_active" href="#">Главная</a></li>
-        <li class="nav__element"><a class="nav__link" href="#">Авторизация</a></li>
+        <li class="nav__element"><a class="nav__link nav__link_active" href="/">Главная</a></li>
+        <li class="nav__element">
+          <a class="button button_style_transparent button_icon_logout" href="/">
+            Авторизация
+          </a>
+        </li>
       </menu>
     </header>
   </div>
@@ -25,10 +29,26 @@
         </div>
       </div>
     </section>
-    <section class="root__section root__section_theme_gray container">
+    <section class="root__section root__section_theme_gray container search-results">
+      <div class="search-results__loading-icon"></div>
+      <p class="search-results__message">Идет поиск новостей...</p>
+    </section>
+    <section class="root__section root__section_theme_gray container search-results">
+      <img class="search-results__not-found-icon" src="<%=require('../../components/search-results/__not-found-icon/not-found.svg') %>">
+      <h2 class="search-results__subtitle title title_size_s">Ничего не найдено</h2>
+      <p class="search-results__message">К сожалению по вашему запросу ничего не найдено.</p>
+    </section>
+    <section class="root__section root__section_theme_gray container search-results">
+
       <h2 class="title title_size_m">Результаты поиска</h2>
-      <div class="card-list">
+      <div class="search-results__list card-list">
         <div class="card">
+          <div class="card__header">
+            <div class="card__toolbar">
+              <button class="button button_style_sub-tooltip">Войдите, чтобы сохранять статьи</button>
+              <button class="button button_style_tooltip button_icon_bookmark"></button>
+            </div>
+          </div>
           <image class="card__image" src="<%=require('../../assets/card_image1.png') %>"></image>
           <div class="card__body">
             <span class="card__date">2 августа, 2019</span>
@@ -40,6 +60,12 @@
           </div>
         </div>
         <div class="card">
+          <div class="card__header">
+            <div class="card__toolbar">
+              <button class="button button_style_tooltip button_icon_bookmark"></button>
+            </div>
+            <button class="button button_style_tooltip">Природа</button>
+          </div>
           <image class="card__image" src="<%=require('../../assets/card_image1.png') %>"></image>
           <div class="card__body">
             <span class="card__date">2 августа, 2019</span>
@@ -51,6 +77,12 @@
           </div>
         </div>
         <div class="card">
+          <div class="card__header">
+            <div class="card__toolbar">
+              <button class="button button_style_tooltip button_icon_trash"></button>
+            </div>
+            <button class="button button_style_tooltip">Природа</button>
+          </div>
           <image class="card__image" src="<%=require('../../assets/card_image1.png') %>"></image>
           <div class="card__body">
             <span class="card__date">2 августа, 2019</span>
@@ -117,6 +149,7 @@
           </div>
         </div>
       </div>
+      <button class="search-results__action-more button button_style_secondary">Показать еще</button>
     </section>
     <section class="root__section container">
       <div class="about">
