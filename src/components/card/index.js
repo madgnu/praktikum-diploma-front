@@ -6,3 +6,4 @@ import './__description/card__description.css';
 import './__source/card__source.css';
 import './__header/card__header.css';
 import './__toolbar/card__toolbar.css';
+import './__title/card__title.css';
