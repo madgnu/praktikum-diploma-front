@@ -1,11 +1,11 @@
-.button_icon_bookmark::after {
+.button.button_icon_bookmark::after {
   content: ' ';
   mask: url(./bookmark.svg);
   mask-size: cover;
   width: 1em;
   height: 1.5em;
   background-color: currentColor;
-  opacity: 0.5;
+  opacity: .5;
   display: inline-block;
   margin: 0 3px;
 }

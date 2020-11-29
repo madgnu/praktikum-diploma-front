@@ -3,3 +3,15 @@
   background-size: cover;
   background-position: center center;
 }
+
+@media screen and (min-resolution: 150dpi), screen and (min-width: 1280px) {
+  .root__section_theme_headliner {
+    background-image: url('./search_bg2x.png');
+  }
+}
+
+@media screen and (min-resolution: 300dpi) and (min-width: 1440px) {
+  .root__section_theme_headliner {
+    background-image: url('./search_bg4x.png');
+  }
+}

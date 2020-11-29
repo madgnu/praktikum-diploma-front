@@ -1,8 +1,8 @@
-.button_icon_logout::after {
+.button.button_icon_logout::after {
   content: ' ';
   mask: url(./logout.svg);
-  width: 1.2em;
-  height: 1.2em;
+  width: 1.5em;
+  height: 1.25em;
   background-color: currentColor;
   display: inline-block;
   margin: auto 5px;

@@ -10,13 +10,17 @@
   height: 40px;
 }
 
-.button_style_sub-tooltip:not(:disabled):hover {
-  opacity: unset;
-  background-color: #eeeeee;
+.button_style_tooltip + .button_style_sub-tooltip {
+  display: none;
 }
 
+.button_style_tooltip:hover + .button_style_sub-tooltip {
+  display: block;
+}
+
+
 @media screen and (max-width: 1024px) {
-  .button_style_sub-tooltip {
+  .button_style_tooltip:hover + .button_style_sub-tooltip {
     display: none;
   }
 }

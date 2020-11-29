@@ -10,9 +10,12 @@
   height: 40px;
 }
 
-.button_style_tooltip:not(:disabled):hover {
-  opacity: unset;
-  background-color: #eeeeee;
+.button.button_style_tooltip:hover {
+  background-color: #eee;
+}
+
+.button.button_style_tooltip:active {
+  background-color: #aaa;
 }
 
 .button.button_style_tooltip {

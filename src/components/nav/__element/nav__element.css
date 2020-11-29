@@ -24,4 +24,12 @@
     margin: 16px 0;
     width: 100%;
   }
+
+  .nav:not(.nav_no-transform) .nav__element:first-child {
+    margin-top: 0;
+  }
+
+  .nav:not(.nav_no-transform) .nav__element:last-child {
+    margin-bottom: 0;
+  }
 }

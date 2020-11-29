@@ -1,4 +1,4 @@
-.button_icon_close::after {
+.button.button_icon_close::after {
   content: ' ';
   mask: url(./close.svg);
   mask-size: cover;
@@ -7,10 +7,5 @@
   height: 1em;
   color: white;
   background-color: currentColor;
-  opacity: 0.5;
   display: inline-block;
-}
-
-.button_icon_close:hover::after {
-  opacity: 1;
 }

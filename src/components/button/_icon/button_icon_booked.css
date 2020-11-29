@@ -1,4 +1,4 @@
-.button_icon_booked::after {
+.button.button_icon_booked::after {
   content: ' ';
   mask: url(./bookmark-fill.svg);
   mask-size: cover;
