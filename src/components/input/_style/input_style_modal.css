@@ -10,4 +10,10 @@
 
 .input_style_modal:focus {
   border-bottom-color: black;
+  box-shadow: unset;
+}
+
+.input_style_modal:invalid {
+  border: unset;
+  border-bottom: 1px double red;
 }

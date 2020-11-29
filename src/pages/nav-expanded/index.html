@@ -15,7 +15,7 @@
   <div class="container container_slim container_overhang container_dashed">
     <header class="header">
       <div class="header__minimal">
-        <a class="header__logo" href="/">NewsExplorer</a>
+        <a class="header__logo" href="./">NewsExplorer</a>
         <div class="header__menu-toggler">
           <button class="button button_style_glyph button_icon_smart-expander"></button>
         </div>
@@ -23,10 +23,10 @@
       <div class="header__links">
         <menu class="header__nav-menu nav nav_fat">
           <li class="nav__element">
-            <a class="nav__link nav__link_active" href="/">Главная</a>
+            <a class="nav__link nav__link_active" href="./">Главная</a>
           </li>
           <li class="nav__element">
-            <a class="button button_style_transparent" href="/">
+            <a class="button button_style_transparent" href="./">
               Авторизоваться
             </a>
           </li>
@@ -41,7 +41,7 @@
           <h1 class="headliner__title title">Что творится в мире?</h1>
           <h2 class="headliner__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</h2>
           <form class="headliner__search-form" action="/">
-            <input class="headliner__search-field input" placeholder="Введите тему новости">
+            <input class="headliner__search-field input" placeholder="Введите тему новости" minlength="5" maxlength="30" required>
             <input class="headliner__search-submit button" type="submit" value="Искать">
           </form>
         </div>
@@ -157,7 +157,7 @@
           </div>
           <input type="submit" class="form__submit button" value="Войти">
         </form>
-        <div class="modal__text">или <a class="modal__link" href="/">Зарегистрироваться</a></div>
+        <div class="modal__text">или <a class="modal__link" href="./">Зарегистрироваться</a></div>
       </div>
     </div>
     <div class="modal">
@@ -182,14 +182,14 @@
           </div>
           <input type="submit" class="form__submit button" value="Зарегистрироваться" disabled>
         </form>
-        <div class="modal__text">или <a class="modal__link" href="/">Войти</a></div>
+        <div class="modal__text">или <a class="modal__link" href="./">Войти</a></div>
       </div>
     </div>
     <div class="modal">
       <div class="modal__container">
         <button class="modal__close-icon button button_style_glyph button_icon_close"></button>
         <h3 class="modal__title">Пользователь успешно зарегистрирован!</h3>
-        <a class="modal__link" href="/">Войти</a>
+        <a class="modal__link" href="./">Войти</a>
       </div>
     </div>
   </main>
@@ -197,7 +197,7 @@
     <span class="footer__copyright">© 2020 Supersite, Powered by News API</span>
     <div class="footer__links">
       <ul class="nav">
-        <li class="nav__element"><a class="nav__link" href="/">Главная</a></li>
+        <li class="nav__element"><a class="nav__link" href="./">Главная</a></li>
         <li class="nav__element"><a class="nav__link" href="https://praktikum.yandex.ru/" target="_blank">Яндекс.Практикум</a></li>
       </ul>
       <ul class="nav nav_no-transform">
