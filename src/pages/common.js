@@ -1,0 +1,9 @@
+import '../components/root';
+import '../components/header';
+import '../components/footer';
+import '../components/container';
+import '../components/title';
+import '../components/card-list';
+import '../components/card';
+import '../components/nav';
+import '../components/button';

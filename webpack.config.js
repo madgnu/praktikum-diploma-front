@@ -10,6 +10,7 @@ module.exports = {
   entry: {
     index: './src/pages/index/index',
     favorites: './src/pages/favorites/favorites',
+    common: './src/pages/common',
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -67,15 +68,16 @@ module.exports = {
       inject: false,
       template: './src/pages/index/index.html',
       filename: 'index.html',
-      chunks: ['index'],
+      chunks: ['common', 'index'],
     }),
     new HtmlWebpackPlugin({
       inject: false,
       template: './src/pages/favorites/favorites.html',
       filename: 'favorites.html',
+      chunks: ['common', 'favorites'],
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/style.[contenthash].css',
+      filename: 'css/[name].[contenthash].css',
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,

@@ -1,14 +1,5 @@
-import '../../components/root';
-import '../../components/header';
-import '../../components/footer';
-import '../../components/container';
-import '../../components/title';
 import '../../components/headliner';
 import '../../components/about';
-import '../../components/card-list';
-import '../../components/card';
-import '../../components/nav';
-import '../../components/button';
 import '../../components/search-results';
 import '../../components/input';
 import '../../components/modal';
