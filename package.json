@@ -1,6 +1,6 @@
 {
   "name": "praktikum-diploma-front",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Diploma project (frontend part) @ ya.praktikum web course",
   "main": "index.js",
   "scripts": {
