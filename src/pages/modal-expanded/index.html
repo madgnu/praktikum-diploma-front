@@ -49,10 +49,10 @@
     </section>
     <section class="root__section root__section_theme_gray container search-results">
       <div class="search-results__loading-icon"></div>
-      <p class="search-results__message">Идет поиск новостей...</p>
+      <h3 class="search-results__message">Идет поиск новостей...</h3>
     </section>
     <section class="root__section root__section_theme_gray container search-results">
-      <img class="search-results__not-found-icon" src="<%=require('../../components/search-results/__not-found-icon/not-found.svg') %>">
+      <img class="search-results__not-found-icon" src="<%=require('../../components/search-results/__not-found-icon/not-found.svg') %>" alt="Грустный смайлик, сообщающий о том, что ничего не найдено">
       <h2 class="search-results__subtitle title title_size_s">Ничего не найдено</h2>
       <p class="search-results__message">К сожалению по вашему запросу ничего не найдено.</p>
     </section>
@@ -120,7 +120,11 @@
     </section>
     <section class="root__section container">
       <div class="about">
-        <img class="about__avatar" src="<%=require('../../assets/avatar.png') %>" alt="Фотография разработчика">
+        <picture>
+          <source media="(min-width: 1440px)" srcset="<%=require('../../assets/avatar2x.png') %>">
+          <img class="about__avatar" srcset="<%=require('../../assets/avatar.png') %>, <%=require('../../assets/avatar2x.png') %> 2x" alt="Фотография разработчика">
+        </picture>
+
         <div class="about__info">
           <h2 class="about__title title title_size_m">Об авторе</h2>
           <div class="about__text">
