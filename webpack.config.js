@@ -86,6 +86,28 @@ module.exports = {
         removeAttributeQuotes: true,
       },
     }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      template: './src/pages/nav-expanded/index.html',
+      filename: 'example-nav.html',
+      chunks: ['common', 'index'],
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+      },
+    }),
+    new HtmlWebpackPlugin({
+      inject: false,
+      template: './src/pages/modal-expanded/index.html',
+      filename: 'example-modal.html',
+      chunks: ['common', 'index'],
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+      },
+    }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',
     }),

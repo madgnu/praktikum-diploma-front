@@ -11,7 +11,7 @@
   <% } %>
   <title>News Explorer</title>
 </head>
-<body class="root">
+<body class="root root_expanded_modal">
   <div class="container container_slim container_overhang container_dashed">
     <header class="header">
       <div class="header__minimal">
@@ -134,7 +134,7 @@
         </div>
       </div>
     </section>
-    <div class="modal">
+    <div class="modal modal_is-opened">
       <div class="modal__container">
         <div class="modal__close-icon">
           <button class="button button_style_glyph button_icon_close"></button>
@@ -151,7 +151,7 @@
             <input class="form__input input input_style_modal" type="password" name="password" id="login_password" pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,15}$" placeholder="Введите пароль" required>
             <span class="form__error">Пароль должен содержать от 8 до 15 символов, а также минимум 1 латинскую заглавную букву, 1 цифру и 1 латинскую строчную букву</span>
           </div>
-          <input type="submit" class="form__submit button" value="Войти">
+          <input type="submit" class="form__submit button" value="Войти" disabled>
         </form>
         <div class="modal__text">или <a class="modal__link" href="/">Зарегистрироваться</a></div>
       </div>

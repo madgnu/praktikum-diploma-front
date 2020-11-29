@@ -18,7 +18,6 @@
   display: block;
 }
 
-
 @media screen and (max-width: 1024px) {
   .button_style_tooltip:hover + .button_style_sub-tooltip {
     display: none;
