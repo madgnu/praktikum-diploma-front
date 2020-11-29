@@ -6,6 +6,11 @@
   margin: 32px auto 0;
 }
 
+@media screen and (max-width: 1024px) {
+  .headliner__subtitle {
+    margin-top: 10px;
+  }
+}
 
 @media screen and (max-width: 640px) {
   .headliner__subtitle {

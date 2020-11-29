@@ -2,3 +2,10 @@
   flex-direction: row;
   align-items: baseline;
 }
+
+
+@media screen and (max-width: 640px) {
+  .nav.nav_no-transform {
+    padding-top: 16px;
+  }
+}

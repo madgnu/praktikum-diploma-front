@@ -7,3 +7,4 @@ import '../components/card-list';
 import '../components/card';
 import '../components/nav';
 import '../components/button';
+import '../components/search-results';

@@ -7,6 +7,7 @@
 
 @media screen and (max-width: 768px) {
   .headliner__search-form {
+    margin-top: 56px;
     height: 56px;
   }
 }

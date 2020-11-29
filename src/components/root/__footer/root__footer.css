@@ -5,13 +5,13 @@
 
 @media screen and (max-width: 768px) {
   .root__footer {
-    margin-top: 45px;
+    margin-top: 0;
   }
 }
 
 
 @media screen and (max-width: 640px) {
   .root__footer {
-    margin-top: 88px;
+    margin-top: 0;
   }
 }

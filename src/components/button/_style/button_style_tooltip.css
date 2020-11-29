@@ -14,3 +14,7 @@
   opacity: unset;
   background-color: #eeeeee;
 }
+
+.button.button_style_tooltip {
+  width: fit-content;
+}
