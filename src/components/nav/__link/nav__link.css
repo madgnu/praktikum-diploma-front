@@ -1,7 +1,7 @@
 @import url('../../../vendor/fonts/roboto.css');
 
 .nav_fat .nav__link {
-  padding: 20px 0;
+  padding: 28px 0;
 }
 
 .nav__link {
@@ -21,4 +21,14 @@
 
 .nav__link:hover {
   opacity: 0.9;
+}
+
+@media screen and (max-width: 640px) {
+  .nav__link {
+    width: 100%;
+  }
+
+  .nav_fat .nav__link {
+    padding: 0;
+  }
 }

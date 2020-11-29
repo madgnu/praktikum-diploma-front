@@ -4,3 +4,9 @@
   right: -36px;
   font-size: 36px;
 }
+
+@media screen and (max-width: 640px) {
+  .modal__close-icon {
+    display: none;
+  }
+}

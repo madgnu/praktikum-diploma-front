@@ -69,12 +69,22 @@ module.exports = {
       template: './src/pages/index/index.html',
       filename: 'index.html',
       chunks: ['common', 'index'],
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+      },
     }),
     new HtmlWebpackPlugin({
       inject: false,
       template: './src/pages/favorites/favorites.html',
       filename: 'favorites.html',
       chunks: ['common', 'favorites'],
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+      },
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css',

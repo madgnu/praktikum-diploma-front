@@ -3,3 +3,14 @@
   font-weight: 500;
   margin: auto 0;
 }
+
+@media screen and (max-width: 640px) {
+  .header__links {
+    margin: 24px 16px;
+    display: none;
+  }
+
+  .root_expanded_nav .header__links {
+    display: block;
+  }
+}

@@ -4,3 +4,9 @@
   margin-top: 62px;
   display: flex;
 }
+
+@media screen and (max-width: 768px) {
+  .headliner__search-form {
+    height: 56px;
+  }
+}

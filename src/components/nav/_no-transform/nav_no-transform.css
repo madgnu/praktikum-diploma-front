@@ -1,0 +1,4 @@
+.nav.nav_no-transform {
+  flex-direction: row;
+  align-items: baseline;
+}

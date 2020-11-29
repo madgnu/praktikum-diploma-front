@@ -1,0 +1,11 @@
+.button_icon_booked::after {
+  content: ' ';
+  mask: url(./bookmark-fill.svg);
+  mask-size: cover;
+  width: 1em;
+  height: 1.5em;
+  background-color: #2F71E5;
+  opacity: 1;
+  display: inline-block;
+  margin: 0 3px;
+}

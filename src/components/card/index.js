@@ -7,3 +7,4 @@ import './__source/card__source.css';
 import './__header/card__header.css';
 import './__toolbar/card__toolbar.css';
 import './__title/card__title.css';
+import './__main-info/card__main-info.css';

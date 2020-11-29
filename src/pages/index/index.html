@@ -14,15 +14,22 @@
 <body class="root">
   <div class="container container_slim container_overhang container_dashed">
     <header class="header">
-      <a class="header__logo" href="/">NewsExplorer</a>
-      <menu class="header__links nav nav_fat">
-        <li class="nav__element"><a class="nav__link nav__link_active" href="/">Главная</a></li>
-        <li class="nav__element">
-          <a class="button button_style_transparent" href="/">
-            Авторизоваться
-          </a>
-        </li>
-      </menu>
+      <div class="header__minimal">
+        <a class="header__logo" href="/">NewsExplorer</a>
+        <div class="header__menu-toggler">
+          <button class="button button_style_glyph button_icon_smart-expander"></button>
+        </div>
+      </div>
+      <div class="header__links">
+        <menu class="header__nav-menu nav nav_fat">
+          <li class="nav__element"><a class="nav__link nav__link_active" href="/">Главная</a></li>
+          <li class="nav__element">
+            <a class="button button_style_transparent" href="/">
+              Авторизоваться
+            </a>
+          </li>
+        </menu>
+      </div>
     </header>
   </div>
   <main class="root__content">
@@ -48,113 +55,61 @@
       <p class="search-results__message">К сожалению по вашему запросу ничего не найдено.</p>
     </section> -->
     <section class="root__section root__section_theme_gray container search-results">
-
       <h2 class="search-results__title title title_size_m">Результаты поиска</h2>
       <div class="search-results__list card-list">
         <div class="card">
           <div class="card__header">
             <div class="card__toolbar">
+              <button class="button button_style_tooltip button_icon_bookmark"></button>
+            </div>
+          </div>
+          <image class="card__image" src="<%=require('../../assets/card_image1.png') %>"></image>
+          <div class="card__body">
+            <div class="card__main-info">
+              <span class="card__date">2 августа, 2019</span>
+              <h3 class="card__title title title_size_s">Национальное достояние – парки</h3>
+              <p class="card__description">
+                В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
+              </p>
+            </div>
+            <a class="card__source" href="https://lenta.ru/" target="_blank">Лента.ру</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <div class="card__toolbar">
+              <button class="button button_style_tooltip button_icon_booked"></button>
+            </div>
+          </div>
+          <image class="card__image" src="<%=require('../../assets/card_image2.png') %>"></image>
+          <div class="card__body">
+            <div class="card__main-info">
+              <span class="card__date">2 августа, 2019</span>
+              <h3 class="card__title title title_size_s">Лесные огоньки: история одной фотографии</h3>
+              <p class="card__description">
+                Фотограф отвлеклась от освещения суровой политической реальности Мексики, чтобы запечатлеть ускользающую красоту одного из местных чудес природы.
+              </p>
+            </div>
+            <a class="card__source" href="https://meduza.io/" target="_blank">Медуза</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__header">
+            <div class="card__toolbar">
               <button class="button button_style_sub-tooltip">Войдите, чтобы сохранять статьи</button>
-              <button class="button button_style_tooltip button_icon_bookmark"></button>
-            </div>
-          </div>
-          <image class="card__image" src="<%=require('../../assets/card_image1.png') %>"></image>
-          <div class="card__body">
-            <span class="card__date">2 августа, 2019</span>
-            <h3 class="card__title title title_size_s">Национальное достояние – парки</h3>
-            <p class="card__description">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-            </p>
-            <a class="card__source" href="#">Лента.ру</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card__header">
-            <div class="card__toolbar">
-              <button class="button button_style_tooltip button_icon_bookmark"></button>
-            </div>
-            <button class="button button_style_tooltip">Природа</button>
-          </div>
-          <image class="card__image" src="<%=require('../../assets/card_image1.png') %>"></image>
-          <div class="card__body">
-            <span class="card__date">2 августа, 2019</span>
-            <h3 class="card__title title title_size_s">Национальное достояние – парки</h3>
-            <p class="card__description">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-            </p>
-            <a class="card__source" href="#">Лента.ру</a>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card__header">
-            <div class="card__toolbar">
               <button class="button button_style_tooltip button_icon_trash"></button>
             </div>
-            <button class="button button_style_tooltip">Природа</button>
           </div>
-          <image class="card__image" src="<%=require('../../assets/card_image1.png') %>"></image>
+          <image class="card__image" src="<%=require('../../assets/card_image3.png') %>"></image>
           <div class="card__body">
-            <span class="card__date">2 августа, 2019</span>
-            <h3 class="card__title title title_size_s">Национальное достояние – парки</h3>
-            <p class="card__description">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-            </p>
-            <a class="card__source" href="#">Лента.ру</a>
-          </div>
-        </div>
-        <div class="card">
-          <image class="card__image" src="<%=require('../../assets/card_image1.png') %>"></image>
-          <div class="card__body">
-            <span class="card__date">2 августа, 2019</span>
-            <h3 class="card__title title title_size_s">Национальное достояние – парки</h3>
-            <p class="card__description">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-            </p>
-            <a class="card__source" href="#">Лента.ру</a>
-          </div>
-        </div>
-        <div class="card">
-          <image class="card__image" src="<%=require('../../assets/card_image1.png') %>"></image>
-          <div class="card__body">
-            <span class="card__date">2 августа, 2019</span>
-            <h3 class="card__title title title_size_s">Национальное достояние – парки</h3>
-            <p class="card__description">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-            </p>
-            <a class="card__source" href="#">Лента.ру</a>
-          </div>
-        </div>
-        <div class="card">
-          <image class="card__image" src="<%=require('../../assets/card_image1.png') %>"></image>
-          <div class="card__body">
-            <span class="card__date">2 августа, 2019</span>
-            <h3 class="card__title title title_size_s">Национальное достояние – парки</h3>
-            <p class="card__description">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-            </p>
-            <a class="card__source" href="#">Лента.ру</a>
-          </div>
-        </div>
-        <div class="card">
-          <image class="card__image" src="<%=require('../../assets/card_image1.png') %>"></image>
-          <div class="card__body">
-            <span class="card__date">2 августа, 2019</span>
-            <h3 class="card__title title title_size_s">Национальное достояние – парки</h3>
-            <p class="card__description">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-            </p>
-            <a class="card__source" href="#">Лента.ру</a>
-          </div>
-        </div>
-        <div class="card">
-          <image class="card__image" src="<%=require('../../assets/card_image1.png') %>"></image>
-          <div class="card__body">
-            <span class="card__date">2 августа, 2019</span>
-            <h3 class="card__title title title_size_s">Национальное достояние – парки</h3>
-            <p class="card__description">
-              В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.
-            </p>
-            <a class="card__source" href="#">Лента.ру</a>
+            <div class="card__main-info">
+              <span class="card__date">2 августа, 2019</span>
+              <h3 class="card__title title title_size_s">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h3>
+              <p class="card__description">
+                Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где...
+              </p>
+            </div>
+            <a class="card__source" href="https://ria.ru/" target="_blank">Риа</a>
           </div>
         </div>
       </div>
@@ -178,7 +133,9 @@
     </section>
     <div class="modal">
       <div class="modal__container">
-        <button class="modal__close-icon button button_style_glyph button_icon_close"></button>
+        <div class="modal__close-icon">
+          <button class="button button_style_glyph button_icon_close"></button>
+        </div>
         <h3 class="modal__title">Вход</h3>
         <form class="modal__form form" action="/">
           <div class="form__field">
@@ -236,7 +193,7 @@
         <li class="nav__element"><a class="nav__link" href="/">Главная</a></li>
         <li class="nav__element"><a class="nav__link" href="https://praktikum.yandex.ru/" target="_blank">Яндекс.Практикум</a></li>
       </ul>
-      <ul class="nav">
+      <ul class="nav nav_no-transform">
         <li class="nav__element"><a class="nav__link nav__link_icon_github" href="https://praktikum.yandex.ru/" target="_blank"></a></li>
         <li class="nav__element"><a class="nav__link nav__link_icon_facebook" href="https://www.facebook.com/" target="_blank"></a></li>
       </ul>

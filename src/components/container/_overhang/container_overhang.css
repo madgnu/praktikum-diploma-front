@@ -5,3 +5,10 @@
   color: white;
   border-color: white;
 }
+
+@media screen and (max-width: 640px) {
+  .container_overhang {
+    padding: 0;
+    width: 100%;
+  }
+}

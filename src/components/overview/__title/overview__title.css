@@ -2,3 +2,15 @@
   margin: 20px 0 0;
   width: 530px;
 }
+
+@media screen and (max-width: 768px) {
+  .overview__title {
+    width: 336px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .overview__title {
+    width: 100%;
+  }
+}

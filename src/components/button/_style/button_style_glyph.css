@@ -1,4 +1,6 @@
 .button_style_glyph {
   background-color: unset;
   padding: 0;
+  font-size: inherit;
+  color: inherit;
 }

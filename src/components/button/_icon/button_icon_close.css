@@ -2,8 +2,10 @@
   content: ' ';
   mask: url(./close.svg);
   mask-size: cover;
+  color: inherit;
   width: 1em;
   height: 1em;
+  color: white;
   background-color: currentColor;
   opacity: 0.5;
   display: inline-block;

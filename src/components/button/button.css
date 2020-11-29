@@ -22,3 +22,9 @@
   background: #E6E8EB;
   color: #B6BCBF;
 }
+
+@media screen and (max-width: 640px) {
+  .button {
+    width: 100%;
+  }
+}
