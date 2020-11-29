@@ -1,0 +1,17 @@
+@import url('../../vendor/fonts/inter.css');
+
+.form {
+  font-family: Inter;
+}
+
+.form > * {
+  margin: 12px 0;
+}
+
+.form > *:first-child {
+  margin-top: 0;
+}
+
+.form > *:last-child {
+  margin-bottom: 0;
+}

@@ -9,3 +9,8 @@
   padding: 10px;
   height: 40px;
 }
+
+.button_style_sub-tooltip:hover {
+  opacity: 1;
+  background-color: #eeeeee;
+}

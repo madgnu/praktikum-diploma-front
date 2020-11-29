@@ -1,0 +1,17 @@
+.modal__link {
+  color: #2F71E5;
+  text-decoration: none;
+  font-family: Inter;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.modal__link:hover {
+  opacity: 0.9;
+}
+
+.modal__container > .modal__link {
+  margin: 16px 0 0;
+  font-size: 18px;
+  line-height: 22px;
+}

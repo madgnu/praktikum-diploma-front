@@ -26,6 +26,11 @@
       <div class="root__headliner container">
         <div class="headliner">
           <h1 class="title">Что творится в мире?</h1>
+          <h2 class="headliner__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</h2>
+          <form class="headliner__search-form" action="/">
+            <input class="headliner__search-field input" placeholder="Введите тему новости">
+            <input class="headliner__search-submit button" type="submit" value="Искать">
+          </form>
         </div>
       </div>
     </section>
@@ -167,6 +172,58 @@
         </div>
       </div>
     </section>
+    <div class="modal">
+      <div class="modal__container">
+        <button class="modal__close-icon button button_style_glyph button_icon_close"></button>
+        <h3 class="modal__title">Вход</h3>
+        <form class="modal__form form" action="/">
+          <div class="form__field">
+            <label class="form__label" for="login_email">Email</label>
+            <input class="form__input input input_style_modal" type="email" name="email" id="login_email" pattern="^[a-z0-9_\-\.]{1,}@([a-z0-9\-]+\.)+[a-z]{2,5}$" placeholder="Введите почту" required>
+            <span class="form__error">Неправильный формат email</span>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="login_password">Пароль</label>
+            <input class="form__input input input_style_modal" type="password" name="password" id="login_password" pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,15}$" placeholder="Введите пароль" required>
+            <span class="form__error">Пароль должен содержать от 8 до 15 символов, а также минимум 1 латинскую заглавную букву, 1 цифру и 1 латинскую строчную букву</span>
+          </div>
+          <input type="submit" class="form__submit button" value="Войти">
+        </form>
+        <div class="modal__text">или <a class="modal__link" href="/">Зарегистрироваться</a></div>
+      </div>
+    </div>
+    <div class="modal">
+      <div class="modal__container">
+        <button class="modal__close-icon button button_style_glyph button_icon_close"></button>
+        <h3 class="modal__title">Регистрация</h3>
+        <form class="modal__form form" action="/">
+          <div class="form__field">
+            <label class="form__label" for="reg_email">Email</label>
+            <input class="form__input input input_style_modal" type="email" name="email" id="reg_email" pattern="^[a-z0-9_\-\.]{1,}@([a-z0-9\-]+\.)+[a-z]{2,5}$" placeholder="Введите почту" required>
+            <span class="form__error">Неправильный формат email</span>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="reg_password">Пароль</label>
+            <input class="form__input input input_style_modal" type="password" name="password" id="reg_password" pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,15}$" placeholder="Введите пароль" required>
+            <span class="form__error">Пароль должен содержать от 8 до 15 символов, а также минимум 1 латинскую заглавную букву, 1 цифру и 1 латинскую строчную букву</span>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="reg_name">Имя</label>
+            <input class="form__input input input_style_modal" type="text" name="name" id="reg_name" minlength="2" maxlength="30" placeholder="Введите своё имя" required>
+            <span class="form__error">Имя должно содержать от 2 до 30 символов</span>
+          </div>
+          <input type="submit" class="form__submit button" disabled="true" value="Зарегистрироваться">
+        </form>
+        <div class="modal__text">или <a class="modal__link" href="/">Войти</a></div>
+      </div>
+    </div>
+    <div class="modal modal_is-opened">
+      <div class="modal__container">
+        <button class="modal__close-icon button button_style_glyph button_icon_close"></button>
+        <h3 class="modal__title">Пользователь успешно зарегистрирован!</h3>
+        <a class="modal__link" href="/">Войти</a>
+      </div>
+    </div>
   </main>
   <footer class="root__footer container container_slim footer">
     <span class="footer__copyright">&copy; 2020 Supersite, Powered by News API</span>
@@ -176,8 +233,8 @@
         <li class="nav__element"><a class="nav__link" href="https://praktikum.yandex.ru/" target="_blank">Яндекс.Практикум</a></li>
       </ul>
       <ul class="nav">
-        <li class="nav__element"><a class="nav__link nav__link_icon_github" href="https://praktikum.yandex.ru/"></a></li>
-        <li class="nav__element"><a class="nav__link nav__link_icon_facebook" href="#"></a></li>
+        <li class="nav__element"><a class="nav__link nav__link_icon_github" href="https://praktikum.yandex.ru/" target="_blank"></a></li>
+        <li class="nav__element"><a class="nav__link nav__link_icon_facebook" href="https://www.facebook.com/" target="_blank"></a></li>
       </ul>
     </div>
   </footer>

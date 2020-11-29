@@ -4,7 +4,12 @@
   mask-size: contain;
   width: 1.5em;
   height: 1.5em;
+  opacity: 0.5;
   background-color: currentColor;
   display: inline-block;
   margin: 0 3px;
+}
+
+.button_icon_trash:hover::after {
+  opacity: 1;
 }

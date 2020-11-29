@@ -1,15 +1,14 @@
-.button_icon_bookmark::after {
+.button_icon_close::after {
   content: ' ';
-  mask: url(./bookmark.svg);
+  mask: url(./close.svg);
   mask-size: cover;
   width: 1em;
-  height: 1.5em;
+  height: 1em;
   background-color: currentColor;
   opacity: 0.5;
   display: inline-block;
-  margin: 0 3px;
 }
 
-.button_icon_bookmark:hover::after {
+.button_icon_close:hover::after {
   opacity: 1;
 }

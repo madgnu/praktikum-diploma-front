@@ -1,6 +1,7 @@
 .button {
   font-family: Roboto;
   border-radius: 100px;
+  border: none;
   background: #2F71E5;
   padding: 12px 20px;
   align-self: center;
@@ -13,6 +14,11 @@
   cursor: pointer;
 }
 
-.button:hover {
+.button:not(:disabled):hover {
   opacity: 0.9;
+}
+
+.button:disabled {
+  background: #E6E8EB;
+  color: #B6BCBF;
 }
