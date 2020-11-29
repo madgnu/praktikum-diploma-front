@@ -10,3 +10,11 @@
     height: 56px;
   }
 }
+
+@media screen and (max-width: 640px) {
+  .headliner__search-form {
+    margin: 116px 0 22px;
+    flex-direction: column;
+    height: unset;
+  }
+}

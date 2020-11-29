@@ -1,5 +1,6 @@
 .about__paragraph {
-  padding: 4px 0;
+  padding: 12px 0;
+  margin: 0;
 }
 
 .about__paragraph:first-child {

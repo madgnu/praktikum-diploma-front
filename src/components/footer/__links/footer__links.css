@@ -10,11 +10,17 @@
 }
 
 .footer__links > *:first-child {
-  margin-left: 0px;
+  margin-left: 0;
 }
 
 .footer__links > *:last-child {
-  margin-right: 0px;
+  margin-right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .footer__links > * {
+    margin: 0 24px;;
+  }
 }
 
 @media screen and (max-width: 640px) {

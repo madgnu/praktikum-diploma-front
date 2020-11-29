@@ -5,3 +5,10 @@
   font-weight: normal;
   margin: 32px auto 0;
 }
+
+
+@media screen and (max-width: 640px) {
+  .headliner__subtitle {
+    margin: 16px auto 0;
+  }
+}

@@ -14,3 +14,9 @@
   opacity: unset;
   background-color: #eeeeee;
 }
+
+@media screen and (max-width: 1024px) {
+  .button_style_sub-tooltip {
+    display: none;
+  }
+}

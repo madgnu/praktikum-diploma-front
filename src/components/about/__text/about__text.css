@@ -5,5 +5,17 @@
   font-size: 18px;
   line-height: 24px;
   max-width: 600px;
-  margin-top: 4px;
+  margin-top: 26px;
+}
+
+@media screen and (max-width: 768px) {
+  .about__text {
+    margin-top: 12px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .about__text {
+    margin-top: 18px;
+  }
 }

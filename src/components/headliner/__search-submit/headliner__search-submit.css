@@ -1,4 +1,4 @@
-.headliner__search-submit {
+.button.headliner__search-submit {
   position: absolute;
   top: 0;
   right: 0;
@@ -7,4 +7,15 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
+}
+
+@media screen and (max-width: 640px) {
+  .button.headliner__search-submit {
+    position: static;
+    top: unset;
+    right: unset;
+    height: 56px;
+    margin-top: 16px;
+    width: 100%;
+  }
 }

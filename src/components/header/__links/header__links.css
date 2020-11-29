@@ -4,6 +4,13 @@
   margin: auto 0;
 }
 
+@media screen and (max-width: 768px) {
+  .header__links {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .header__links {
     margin: 24px 16px;

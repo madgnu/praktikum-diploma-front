@@ -7,6 +7,12 @@
 
 @media screen and (max-width: 768px) {
   .headliner {
-    max-width: 385px;
+    max-width: 440px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .headliner {
+    width: 100%;
   }
 }

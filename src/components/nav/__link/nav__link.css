@@ -23,6 +23,12 @@
   opacity: 0.9;
 }
 
+@media screen and (max-width: 768px) {
+  .nav_fat .nav__link {
+    padding: 22px 0;
+  }
+}
+
 @media screen and (max-width: 640px) {
   .nav__link {
     width: 100%;
