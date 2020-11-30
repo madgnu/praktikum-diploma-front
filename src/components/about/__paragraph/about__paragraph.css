@@ -1,0 +1,12 @@
+.about__paragraph {
+  padding: 12px 0;
+  margin: 0;
+}
+
+.about__paragraph:first-child {
+  padding-top: 0;
+}
+
+.about__paragraph:last-child {
+  padding-bottom: 0;
+}

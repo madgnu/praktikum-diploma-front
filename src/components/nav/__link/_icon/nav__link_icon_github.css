@@ -1,0 +1,7 @@
+.nav__link_icon_github {
+  content: url(./icon_github.svg);
+}
+
+.nav__link_icon_github:hover {
+  transform: scale(1.3);
+}

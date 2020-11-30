@@ -1,0 +1,11 @@
+.button.button_icon_close::after {
+  content: ' ';
+  mask: url(./close.svg);
+  mask-size: cover;
+  color: inherit;
+  width: 1em;
+  height: 1em;
+  color: white;
+  background-color: currentColor;
+  display: inline-block;
+}

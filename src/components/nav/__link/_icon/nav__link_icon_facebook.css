@@ -1,0 +1,7 @@
+.nav__link_icon_facebook {
+  content: url(./icon__facebook.svg);
+}
+
+.nav__link_icon_facebook:hover {
+  transform: scale(1.3);
+}

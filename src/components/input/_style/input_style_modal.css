@@ -1,0 +1,19 @@
+@import url('../../../vendor/fonts/inter.css');
+
+.input_style_modal {
+  padding: 8px 0;
+  border-radius: unset;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.input_style_modal:focus {
+  border-bottom-color: black;
+  box-shadow: unset;
+}
+
+.input_style_modal:invalid {
+  border: unset;
+  border-bottom: 1px double red;
+}

@@ -1,0 +1,5 @@
+@import url('../../vendor/fonts/roboto.css');
+
+.search-results {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}

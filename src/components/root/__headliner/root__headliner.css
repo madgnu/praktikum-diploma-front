@@ -1,0 +1,11 @@
+.root__headliner {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1024px) {
+  .root__headliner {
+    margin-top: 70px;
+  }
+}

@@ -1,0 +1,35 @@
+.nav__element {
+  margin: 0 16px;
+  position: relative;
+  vertical-align: baseline;
+  display: flex;
+}
+
+.nav__element:first-child {
+  margin-left: 0;
+}
+
+.nav__element:last-child {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .nav__element {
+    margin: 0 8px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .nav:not(.nav_no-transform) .nav__element {
+    margin: 16px 0;
+    width: 100%;
+  }
+
+  .nav:not(.nav_no-transform) .nav__element:first-child {
+    margin-top: 0;
+  }
+
+  .nav:not(.nav_no-transform) .nav__element:last-child {
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,9 @@
+.search-results__title {
+  margin: 0;
+}
+
+@media screen and (max-width: 640px) {
+  .search-results__title {
+    margin-top: 27px;
+  }
+}

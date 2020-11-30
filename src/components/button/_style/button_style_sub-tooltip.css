@@ -1,0 +1,25 @@
+.button_style_sub-tooltip {
+  border-radius: 10px;
+  border: none;
+  color: black;
+  background-color: white;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 23px;
+  padding: 10px;
+  height: 40px;
+}
+
+.button_style_tooltip + .button_style_sub-tooltip {
+  display: none;
+}
+
+.button_style_tooltip:hover + .button_style_sub-tooltip {
+  display: block;
+}
+
+@media screen and (max-width: 1024px) {
+  .button_style_tooltip:hover + .button_style_sub-tooltip {
+    display: none;
+  }
+}

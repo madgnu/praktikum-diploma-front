@@ -1,0 +1,15 @@
+.search-results__list {
+  margin-top: 64px;
+}
+
+@media screen and (max-width: 768px) {
+  .search-results__list {
+    margin-top: 32px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .search-results__list {
+    margin-top: 23px;
+  }
+}

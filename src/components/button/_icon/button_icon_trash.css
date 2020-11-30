@@ -1,0 +1,15 @@
+.button.button_icon_trash::after {
+  content: ' ';
+  mask: url(./trash.svg);
+  mask-size: contain;
+  width: 1.5em;
+  height: 1.5em;
+  opacity: .5;
+  background-color: currentColor;
+  display: inline-block;
+  margin: 0 3px;
+}
+
+.button_icon_trash:hover::after {
+  opacity: 1;
+}

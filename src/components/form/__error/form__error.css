@@ -1,0 +1,12 @@
+.form__error {
+  font-size: 12px;
+  line-height: 15px;
+  color: red;
+  visibility: hidden;
+  top: 0;
+  left: 0;
+}
+
+.form__input:invalid:not(:placeholder-shown) + .form__error {
+  visibility: visible;
+}

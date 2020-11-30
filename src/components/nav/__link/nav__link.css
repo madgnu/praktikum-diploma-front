@@ -1,0 +1,40 @@
+@import url('../../../vendor/fonts/roboto.css');
+
+.nav_fat .nav__link {
+  padding: 28px 0;
+}
+
+.nav__link {
+  color: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+  margin: 0 20px;
+}
+
+.nav__link:first-child {
+  margin-left: 0;
+}
+
+.nav__link:last-child {
+  margin-right: 0;
+}
+
+.nav__link:hover {
+  opacity: .9;
+}
+
+@media screen and (max-width: 768px) {
+  .nav_fat .nav__link {
+    padding: 22px 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .nav__link {
+    width: 100%;
+  }
+
+  .nav_fat .nav__link {
+    padding: 0;
+  }
+}

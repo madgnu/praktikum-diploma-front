@@ -1,0 +1,13 @@
+.button.button_icon_smart-expander {
+  content: ' ';
+  mask: url(./menu.svg);
+  mask-size: cover;
+  width: 1.5em;
+  height: 1.5em;
+  background-color: currentColor;
+  display: inline-block;
+}
+
+.root_expanded_nav .button_icon_smart-expander, .root_expanded_modal .button_icon_smart-expander {
+  mask: url(./close.svg);
+}

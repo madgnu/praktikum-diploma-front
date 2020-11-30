@@ -1,0 +1,16 @@
+.button.button_style_secondary {
+  color: #1A1B22;
+  background-color: white;
+  border: none;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.button_style_secondary:hover {
+  opacity: .9;
+}
+
+.button_style_secondary:active {
+  opacity: .5;
+}

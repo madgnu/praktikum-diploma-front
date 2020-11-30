@@ -1,0 +1,16 @@
+.card__toolbar {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.card__toolbar > * {
+  margin: 0 5px;
+}
+
+.card__toolbar > *:first-child {
+  margin-right: 0;
+}
+
+.card__toolbar > *:last-child {
+  margin-left: 0;
+}

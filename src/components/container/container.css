@@ -1,0 +1,18 @@
+.container {
+  padding: 80px 100px;
+  width: calc(100%-200px);
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 40px;
+    width: calc(100%-80px);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .container {
+    padding: 6px 16px;
+    width: calc(100%-32px);
+  }
+}

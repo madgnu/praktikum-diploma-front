@@ -1,0 +1,8 @@
+@import url('../../../vendor/fonts/sourcesanspro.css');
+
+.card__date {
+  font-family: 'Source Sans Pro', 'Segoe UI', Tahoma, Geneva, Verdana, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  color: #B6BCBF;
+}

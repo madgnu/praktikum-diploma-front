@@ -1,0 +1,13 @@
+.card__body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+  .card__body {
+    padding: 16px;
+  }
+}

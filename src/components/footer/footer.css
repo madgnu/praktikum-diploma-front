@@ -1,0 +1,14 @@
+@import url('../../vendor/fonts/roboto.css');
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+@media screen and (max-width: 640px) {
+  .footer {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+}

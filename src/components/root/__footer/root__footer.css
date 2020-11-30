@@ -1,0 +1,17 @@
+.root__footer {
+  margin: 32px 0 20px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .root__footer {
+    margin-top: 0;
+  }
+}
+
+
+@media screen and (max-width: 640px) {
+  .root__footer {
+    margin-top: 0;
+  }
+}

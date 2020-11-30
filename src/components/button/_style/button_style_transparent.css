@@ -1,0 +1,14 @@
+.button.button_style_transparent {
+  background-color: unset;
+  border: 1px solid;
+  border-color: inherit;
+  color: inherit;
+}
+
+.button_style_transparent:hover {
+  opacity: 0.9;
+}
+
+.button_style_transparent:active {
+  opacity: 0.5;
+}
