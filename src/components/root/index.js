@@ -11,10 +11,7 @@ import Component from '../../modules/component';
 import parser from '../../modules/parser';
 
 import Header from '../header';
-import SearchResults from '../search-results';
 import Footer from '../footer';
-import Headliner from '../headliner';
-import About from '../about';
 
 export default class Root extends Component {
   render() {
@@ -24,9 +21,7 @@ export default class Root extends Component {
           <${Header} />
         </div>
         <main className="root__content">
-          <${Headliner} />
-          <${SearchResults} />
-          <${About} />
+          ${this.props.children}
         </main>
         <${Footer} />
       </>

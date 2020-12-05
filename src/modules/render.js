@@ -11,8 +11,7 @@ function render(vdom, parent) {
       for (let [k, v] of Object.entries(vdom.props)) applyAttribute(node, k, v);
     }
 
-    Array.isArray(vdom.children) &&
-      vdom.children.forEach((e) => render(e, node));
+    Array.isArray(vdom.children) && vdom.children.forEach((e) => render(e, node));
     return node;
   } else if (typeof vdom === "object" && typeof vdom.type === "function") {
     return Component.render(vdom, parent);

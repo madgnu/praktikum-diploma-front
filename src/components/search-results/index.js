@@ -17,7 +17,7 @@ export default class SearchResults extends Component {
     return parser `
       <section class="root__section root__section_theme_gray container search-results">
         <h2 class="search-results__title title title_size_m">Результаты поиска</h2>
-        <${CardList} />
+        <${CardList} store=${this.props.store} />
         <button class="search-results__action-more button button_style_secondary">Показать еще</button>
       </section>
     `;

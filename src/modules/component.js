@@ -83,7 +83,6 @@ class Component {
       const newState = Object.assign({}, this.state, nextState);
       const oldState = this.state;
       const willUpdate = this.shouldComponentUpdate(nextState);
-      console.log(willUpdate, this);
       if (willUpdate) {
         this.componentWillUpdate(this.props, nextState);
         this.state = newState;

@@ -89,12 +89,11 @@ function buildVDOM(chunks, values) {
   let parent = root;
   while (chunks.length) {
     const chunk = chunks.shift();
-    console.log(chunk);
     if (chunk[0] !== '<') {
       if (chunk === dummy) {
         const v = values.shift();
         if (Array.isArray(v)) parent.children.push(...v);
-        else parent.children.push(v);
+        else parent.children.push(v || '');
       } else parent.children.push(chunk);
     } else {
       const tag = parseTag(chunk, values);
