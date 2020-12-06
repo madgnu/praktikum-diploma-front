@@ -13,7 +13,7 @@ const apiConfig = {
     method: 'POST',
     path: '/signup',
   },
-  getArticles: {
+  getFavorites: {
     method: 'GET',
     path: '/articles',
   },

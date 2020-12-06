@@ -1,3 +1,5 @@
+import loadFavorites from "./loadFavorites";
+
 const { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_ERROR } = require("./types");
 
 const loadUserRequest = () => {
@@ -20,14 +22,20 @@ const loadUserError = (error) => {
   }
 }
 
-const loadUser = () => {
+const loadUser = (redirectTo = null, withFav = false) => {
   return async (dispatch, getState) => {
     try {
       const { userApi } = getState().user;
       dispatch(loadUserRequest());
       const  rData = await userApi.loadUser();
       dispatch(loadUserSuccess(rData));
+      if (withFav) {
+        dispatch(loadFavorites());
+      }
     } catch (err) {
+      if (redirectTo) {
+        location.href = redirectTo;
+      }
       dispatch(loadUserError(err));
     }
   }

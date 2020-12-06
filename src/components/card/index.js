@@ -21,10 +21,24 @@ export default class Card extends Component {
   constructor(props) {
     super(props);
     const store = this.props.store.getState();
+    const { keyMode, cards } = store.news;
+    const newsCard = (keyMode === 'numbers') ? cards[this.props.key] : cards.find((el) => el._id === this.props.key);
     this.state = {
       loggedIn: store.user.loggedIn,
-      data: store.news.cards[this.props.key].data,
+      data: newsCard.data,
+      _id: newsCard._id,
     }
+  }
+
+  onClickFavorite = (event) => {
+    event.preventDefault();
+    if (!this.state.loggedIn) {
+      return this.props.store.dispatch(openModal('login'));
+    }
+    if (this.state._id) {
+      return this.props.store.dispatch(deleteFavorite(this.props.key, this.props.deleteUnfaved));;
+    }
+    this.props.store.dispatch(addFavorite(this.props.key));
   }
 
   renderHint() {
@@ -34,27 +48,27 @@ export default class Card extends Component {
     return null;
   }
 
-  onClickFavorite = (event) => {
-    event.preventDefault();
-    if (!this.state.loggedIn) {
-      return this.props.store.dispatch(openModal('login'));
+  renderKeyword() {
+    const { keyword } = this.state.data;
+    if (keyword) {
+      return parser `<button class="button button_style_tooltip">${keyword}</button>`;
     }
-    if (this.state._id) {
-      return this.props.store.dispatch(deleteFavorite(this.props.key));;
-    }
-    this.props.store.dispatch(addFavorite(this.props.key));
   }
 
   render() {
     const data = this.state.data;
-    const bookedClass =  this.state._id ? 'button_icon_booked' : '';
+    let bookedClass =  'button_icon_bookmark';
+    if (this.state._id) {
+      bookedClass = this.props.deleteUnfaved ? 'button_icon_trash' : 'button_icon_booked';
+    }
     return parser `
       <div className="card">
         <div className="card__header">
           <div className="card__toolbar">
-            <button className=${`button button_style_tooltip button_icon_bookmark ${bookedClass}`} onClick=${this.onClickFavorite}  disabled=${this.state.loading}></button>
+            <button className=${`button button_style_tooltip ${bookedClass}`} onClick=${this.onClickFavorite}  disabled=${this.state.loading}></button>
             ${this.renderHint()}
           </div>
+          ${this.renderKeyword()}
         </div>
         <img className="card__image" src=${data.image} alt="Превью статьи" />
         <div className="card__body">
@@ -75,7 +89,8 @@ export default class Card extends Component {
 
   mapStoreToState = () => {
     const store = this.props.store.getState();
-    const card = store.news.cards[this.props.key];
+    const { cards, keyMode } = store.news;
+    const card = (keyMode === 'numbers') ?  cards[this.props.key] : cards.find((el) => el._id === this.props.key);
     this.setState({ ...card, loggedIn: store.user.loggedIn });
   }
 

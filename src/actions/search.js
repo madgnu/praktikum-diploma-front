@@ -21,7 +21,7 @@ const dataMockup = {
 const searchStart = (freshStart, query) => {
   return {
     type: FETCH_NEWS_REQUEST,
-    payload: { freshStart, query },
+    payload: { freshStart, query, keyMode: 'numbers' },
   }
 };
 

@@ -83,7 +83,7 @@ export default class SearchResults extends Component {
       return parser `
         <>
           <h2 className="search-results__title title title_size_m">Результаты поиска</h2>
-          <${CardList} store=${this.props.store} />
+          <${CardList} store=${this.props.store} deleteUnfaved=${this.props.deleteUnfaved || false} />
           ${this.showMore()}
         </>
       `;

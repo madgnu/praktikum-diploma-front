@@ -15,10 +15,11 @@ export default class CardList extends Component {
 
   render() {
     const state = this.props.store.getState();
-    const cards = state.news.cards.map((el, i) => parser `<${Card} store=${this.props.store} key=${i}/>`);
+    const { keyMode, cards } = state.news;
+    const cardsMarkup = cards.map((el, i) => parser `<${Card} store=${this.props.store} deleteUnfaved=${this.props.deleteUnfaved} key=${(keyMode === 'numbers') ? i : el._id} />`);
     return parser `
       <div class="search-results__list card-list">
-        ${cards}
+        ${cardsMarkup}
       </div>
     `;
   }

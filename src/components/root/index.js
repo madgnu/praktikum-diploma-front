@@ -33,9 +33,10 @@ export default class Root extends Component {
   }
 
   render() {
+    const overhangHeaderClass = this.props.overhangHeader ? 'container_overhang' : '';
     return parser `
       <div className="root">
-        <div className="container container_slim container_overhang container_dashed">
+        <div className=${`container container_slim container_dashed ${overhangHeaderClass}`}>
           <${Header} store=${this.props.store} pageName=${this.props.pageName} />
         </div>
         <main className="root__content">

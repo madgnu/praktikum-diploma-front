@@ -17,11 +17,12 @@ const favoriteError = (error, key) => {
   }
 }
 
-const favoriteSuccess = (key, rData) => {
+const favoriteSuccess = (key, rData, deleteCard = false) => {
   return {
     type: FAVORITE_SUCCESS,
     payload: {
       key,
+      deleteCard,
       _id: rData._id,
     }
   }
@@ -46,17 +47,16 @@ export const addFavorite = (key) => {
   }
 }
 
-export const deleteFavorite = (key) => {
+export const deleteFavorite = (key, deleteCard = false) => {
   return async (dispatch, getState) => {
     try {
       const state = getState();
       const { userApi } = state.user;
+      const { keyMode, cards } = state.news;
       dispatch(favoriteRequest(key));
-      const card = state.news.cards[key];
-      await userApi.removeFavorite({
-        articleId: card._id,
-      });
-      dispatch(favoriteSuccess(key, { _id: null }));
+      const articleId = (keyMode === 'numbers') ? cards[key]._id : key;
+      await userApi.removeFavorite({ articleId });
+      dispatch(favoriteSuccess(key, { _id: null }, deleteCard));
     } catch (err) {
       dispatch(favoriteError(err, key));
     }
