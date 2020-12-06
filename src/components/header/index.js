@@ -8,6 +8,7 @@ import './__menu-toggler/header__menu-toggler.css';
 import Component from '../../modules/component';
 import parser from '../../modules/parser';
 import signout from '../../actions/signout';
+import openModal from '../../actions/openModal';
 
 export default class Header extends Component {
   constructor(props) {
@@ -24,29 +25,37 @@ export default class Header extends Component {
 
   onClickLogin = (event)  => {
     event.preventDefault();
+    this.props.store.dispatch(openModal('login'));
   }
 
   render() {
     const { name, loggedIn } = this.state;
 
+    const links = [{ href: './', title: 'Главная' }];
+    if (loggedIn) links.push({ href: './favorites.html', title: 'Сохраненные статьи' });
+    const linksMarkup = links.map((el) =>
+      parser `
+        <li class="nav__element" key=${el.title}>
+          <a class=${`nav__link ${ (el.title === this.props.pageName) ? 'nav__link_active' : '' }`} href=${el.href}>${el.title}</a>
+        </li>`
+    );
+
     const buttonStyle = `button button_style_transparent ${ loggedIn ? 'button_icon_logout' : '' }`;
     const buttonName = loggedIn ? name : 'Авторизоваться';
     const buttonAction = loggedIn ? this.onClickSignout : this.onClickLogin;
     return parser `
-      <header class="header">
-        <div class="header__minimal">
-          <a class="header__logo" href="./">NewsExplorer</a>
-          <div class="header__menu-toggler">
-            <button class="button button_style_glyph button_icon_smart-expander"></button>
+      <header className="header">
+        <div className="header__minimal">
+          <a className="header__logo" href="./">NewsExplorer</a>
+          <div className="header__menu-toggler">
+            <button className="button button_style_glyph button_icon_smart-expander"></button>
           </div>
         </div>
-        <div class="header__links">
-          <menu class="header__nav-menu nav nav_fat">
-            <li class="nav__element">
-              <a class="nav__link nav__link_active" href="./">Главная</a>
-            </li>
-            <li class="nav__element">
-              <a class=${buttonStyle} onClick=${buttonAction} href="./">${buttonName}</a>
+        <div className="header__links">
+          <menu className="header__nav-menu nav nav_fat">
+            ${linksMarkup}
+            <li className="nav__element" key="log-button">
+              <a className=${buttonStyle} onClick=${buttonAction} href="./">${buttonName}</a>
             </li>
           </menu>
         </div>

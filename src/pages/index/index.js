@@ -18,20 +18,28 @@ import Root from '../../components/root';
 import SearchResults from '../../components/search-results';
 import Headliner from '../../components/headliner';
 import About from '../../components/about';
-import signin from '../../actions/signin';
+
+import modalReducer from '../../reducers/modals';
+import { signinSuccess } from '../../actions/signin';
+import loadUser from '../../actions/loadUser';
 
 const reducer = flux.combineReducers({
   news: newsReducer,
   user: userReducer,
+  modal: modalReducer,
 });
 
 const store = flux.applyMiddleware(flux.createStore(reducer), thunkMiddleware, loggerMiddleware);
-store.dispatch(signin('madgnu@madg.nu', 'Str0ngPassword'));
+const authToken = localStorage.getItem('jwt');
+if (authToken) {
+  store.dispatch(signinSuccess(authToken));
+  store.dispatch(loadUser());
+}
 
 render(parser `
-  <${Root} store=${store}>
+  <${Root} store=${store} pageName="Главная">
     <${Headliner} store=${store} />
     <${SearchResults} store=${store} />
     <${About} />
   </${Root}>
-`, document.querySelector('.root'));
+`, document.querySelector('body'));

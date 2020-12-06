@@ -8,3 +8,6 @@ export const USER_LOGIN_ERROR = 'USER_LOGIN_ERROR';
 export const USER_LOGOUT = 'USER_LOGOUT';
 
 export const  USER_SIGNIN_SUCCESS = 'USER_SIGNIN_SUCCESS';
+
+export const MODAL_OPEN = 'MODAL_OPEN';
+export const MODAL_CLOSE = 'MODAL_CLOSE';;

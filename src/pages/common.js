@@ -1,3 +1,4 @@
+import '../components/body';
 import '../components/root';
 import '../components/header';
 import '../components/footer';

@@ -1,4 +1,5 @@
 import createUserApi from "../api/userApi";
+import closeModal from "./closeModal";
 import loadUser from "./loadUser";
 import { USER_LOGIN_ERROR, USER_LOGIN_REQUEST, USER_SIGNIN_SUCCESS } from "./types";
 
@@ -15,7 +16,7 @@ const signinError = (error) => {
   }
 }
 
-const signinSuccess  = (token) => {
+export const signinSuccess  = (token) => {
   const headers = {
     'Authorization': `Bearer ${token}`,
     'Content-Type': 'application/json',
@@ -31,7 +32,7 @@ const signinSuccess  = (token) => {
   }
 }
 
-const signin = (email, password) => {
+export const signin = (email, password) => {
   return async (dispatch, getState) => {
     try {
       const { userApi } = getState().user;
@@ -39,6 +40,7 @@ const signin = (email, password) => {
       const { token } = await userApi.signin(null, { email, password });
       dispatch(signinSuccess(token));
       dispatch(loadUser());
+      dispatch(closeModal());
     } catch (err) {
       dispatch(signinError(err));
     }
