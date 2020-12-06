@@ -73,7 +73,7 @@ class Component {
       return patch(node.__instance.render(), node, parent);
     } else if (Component.isPrototypeOf(vdom.type)) {
       const newNode = Component.render(vdom, parent);
-      return parent ? parent.replaceChild(newNode, node) : newNode;
+      return parent ? parent.replaceChild(newNode, node) && newNode : newNode;
     } else return patch(vdom.type(props), node, parent);
   }
 

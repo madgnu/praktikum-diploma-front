@@ -47,10 +47,14 @@ const initialState = {
 
 const store = flux.applyMiddleware(flux.createStore(reducer, initialState), thunkMiddleware, loggerMiddleware);
 
-render(parser `
-  <${Root} store=${store}>
-    <${Headliner} store=${store} />
-    <${SearchResults} store=${store} />
-    <${About} />
-  </${Root}>
-`, document.querySelector('.root'));
+const vDOM = parser `
+<${Root} store=${store}>
+  <${Headliner} store=${store} />
+  <${SearchResults} store=${store} />
+  <${About} />
+</${Root}>
+`;
+//<${SearchResults} store=${store} />
+// console.log(vDOM);
+
+render(vDOM, document.querySelector('.root'));

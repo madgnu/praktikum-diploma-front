@@ -10,6 +10,7 @@ function tokenize(strToParse) {
     const isWhitespace = char.match(/\s/);
     if (char === '<') chunks.push('');
     if (char !== '<' && lastChar === '>') chunks.push('');
+    if (char !== '<' && lastChar !== '>' && (chunks[chunks.length - 1] === dummy)) chunks.push('');
     if (isWhitespace && chunks[chunks.length - 1] && !oldIsWhitespace) {
       chunks[chunks.length - 1] += ' ';
     } else if (!isWhitespace) chunks[chunks.length - 1] += char;
@@ -83,9 +84,9 @@ function parseTag(tagStr, values) {
 
 function buildVDOM(chunks, values) {
   const root = {
-    parent: null,
     children: [],
   };
+  root.parent = root;
   let parent = root;
   while (chunks.length) {
     const chunk = chunks.shift();
@@ -93,12 +94,24 @@ function buildVDOM(chunks, values) {
       if (chunk === dummy) {
         const v = values.shift();
         if (Array.isArray(v)) parent.children.push(...v);
-        else parent.children.push(v || '');
+        else {
+          if (typeof(v) === 'object' && v && !v.type) {
+            parent.children.push(...v.children);
+          } else if (v) {
+            parent.children.push(v)
+          }
+        };
       } else parent.children.push(chunk);
     } else {
       const tag = parseTag(chunk, values);
       tag.parent = parent;
-      if (!tag.closing) parent.children.push(tag);
+      if (!tag.closing) {
+        if (tag.type) {
+          parent.children.push(tag);
+        } else {
+          parent.parent.children.push(tag);
+        }
+      };
       if (!tag.closing && !tag.selfClosing) {
         parent = tag;
       } else if (tag.closing) {
