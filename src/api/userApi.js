@@ -12,7 +12,19 @@ const apiConfig = {
   signup: {
     method: 'POST',
     path: '/signup',
-  }
+  },
+  getArticles: {
+    method: 'GET',
+    path: '/articles',
+  },
+  addFavorite: {
+    method: 'POST',
+    path: '/articles',
+  },
+  removeFavorite: {
+    method: 'DELETE',
+    path: '/articles/:articleId',
+  },
 };
 
 const defaultHeaders = {

@@ -8,16 +8,24 @@ export default class Api {
   }
 
   async _query(path, method, params, body) {
+    let calculatedPath = path;
     let paramStr = '';
+    const paramsParts = [];
     if (params) {
-      const paramsParts = [];
       for (let [k, v] of Object.entries(params)) {
-        paramsParts.push(`${k}=${v}`);
+        if (calculatedPath.indexOf(`:${k}`)) {
+          calculatedPath = calculatedPath.replace(`:${k}`, v);
+        } else {
+          paramsParts.push(`${k}=${v}`);
+        }
       }
-      paramStr = `?${paramsParts.join('&')}`;
+
+      if (paramsParts.length) {
+        paramStr = `?${paramsParts.join('&')}`;
+      }
     }
 
-    const url = `${this._baseUrl}/${path}${paramStr}`;
+    const url = `${this._baseUrl}${calculatedPath}${paramStr}`;
     const options = {
       method: method,
       headers: this._headers,

@@ -41,7 +41,6 @@ export default class Modal extends Component {
   }
 
   render() {
-    console.log(this.state);
     return parser `
       <div className="modal">
         <div className="modal__container">

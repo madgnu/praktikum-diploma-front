@@ -26,10 +26,23 @@ const searchStart = (freshStart, query) => {
 };
 
 const searchSuccess = (rData, page) => {
+  let cards = [];
+  if (rData.articles) {
+    cards = rData.articles.map((el) => ({
+      data: {
+        title: el.title,
+        text: el.description,
+        image: el.urlToImage,
+        date: el.publishedAt,
+        link: el.url,
+        source: el.source.name,
+      }
+    }));
+  }
   return {
     type: FETCH_NEWS_SUCCESS,
     payload: {
-      cards: rData.articles,
+      cards,
       page,
       total: rData.totalResults,
     },
