@@ -11,7 +11,7 @@ import * as flux from '../../modules/store';
 import loggerMiddleware from '../../middlewares/logger';
 import thunkMiddleware from '../../middlewares/thunk';
 
-import { FETCH_NEWS_REQUEST, FETCH_NEWS_SUCCESS } from '../../actions/types';
+import newsReducer from '../../reducers/news';
 
 import Api from '../../modules/api';
 
@@ -27,34 +27,21 @@ const newsApi = new Api('http://newsapi.org/v2', { 'Authorization' : 'ea576070b4
   }
 });
 
-function reducer(state, action) {
-  switch (action.type) {
-    case FETCH_NEWS_REQUEST: {
-      const { query: lastQuery, freshStart } = action.payload;
-      const cards = freshStart ? [] : state.cards;
-
-      return { ...state, loading: true, cards, lastQuery };
-    }
-    case FETCH_NEWS_SUCCESS: return { ...state, loading: false, cards: [...state.cards, ...action.payload] };
-  }
-  return state;
-}
-
 const initialState = {
   newsApi,
   cards: [],
 }
 
+const reducer = flux.combineReducers({
+  news: newsReducer,
+});
+
 const store = flux.applyMiddleware(flux.createStore(reducer, initialState), thunkMiddleware, loggerMiddleware);
 
-const vDOM = parser `
-<${Root} store=${store}>
-  <${Headliner} store=${store} />
-  <${SearchResults} store=${store} />
-  <${About} />
-</${Root}>
-`;
-//<${SearchResults} store=${store} />
-// console.log(vDOM);
-
-render(vDOM, document.querySelector('.root'));
+render(parser `
+  <${Root} store=${store}>
+    <${Headliner} store=${store} />
+    <${SearchResults} store=${store} />
+    <${About} />
+  </${Root}>
+`, document.querySelector('.root'));

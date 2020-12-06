@@ -22,6 +22,8 @@ export default class SearchResults extends Component {
       loading: false,
       searched: false,
       hasCards: false,
+      hasError: false,
+      allLoaded: false,
     }
   }
 
@@ -30,12 +32,25 @@ export default class SearchResults extends Component {
   }
 
   partNotFound() {
-    if (this.state.searched && !this.state.loading && !this.state.hasCards) {
+    if (this.state.searched && !this.state.loading && !this.state.hasCards && !this.state.hasError) {
       return parser `
         <>
           <img class="search-results__not-found-icon" src=${iconNotFound} alt="Грустный смайлик, сообщающий о том, что ничего не найдено" />
           <h2 class="search-results__subtitle title title_size_s">Ничего не найдено</h2>
           <p class="search-results__message">К сожалению по вашему запросу ничего не найдено.</p>
+        </>
+      `;
+    }
+    return null;
+  }
+
+  partHasError() {
+    if (this.state.hasError) {
+      return parser `
+        <>
+          <img class="search-results__not-found-icon" src=${iconNotFound} alt="Грустный смайлик, сообщающий о том, что все сломалось" />
+          <h2 class="search-results__subtitle title title_size_s">Произошла ошибка</h2>
+          <p class="search-results__message">К сожалению при выполнении запроса произошла ошибка.</p>
         </>
       `;
     }
@@ -54,13 +69,21 @@ export default class SearchResults extends Component {
     return null;
   }
 
+  showMore() {
+    const { loading, allLoaded } = this.state;
+    if (!loading && !allLoaded) {
+      return parser `<button class="search-results__action-more button button_style_secondary" onClick=${this.onClickLoadMore}>Показать еще</button>`;
+    }
+    return null;
+  }
+
   partCards() {
     if (this.state.hasCards) {
       return parser `
         <>
           <h2 class="search-results__title title title_size_m">Результаты поиска</h2>
           <${CardList} store=${this.props.store} />
-          <button class="search-results__action-more button button_style_secondary" onClick=${this.onClickLoadMore}>Показать еще</button>
+          ${this.showMore()}
         </>
       `;
     }
@@ -68,23 +91,24 @@ export default class SearchResults extends Component {
   }
 
   render() {
-    const vDOM = parser `
+    return parser `
       <section class="root__section root__section_theme_gray container search-results">
         ${this.partCards()}
         ${this.partLoading()}
         ${this.partNotFound()}
+        ${this.partHasError()}
       </section>
     `;
-    console.log(vDOM);
-    return vDOM;
   }
 
   mapStoreToState = () => {
     const store = this.props.store.getState();
     this.setState({
-      loading: store.loading,
-      hasCards: store.cards.length > 0,
-      searched: Boolean(store.lastQuery),
+      loading: store.news.loading,
+      hasCards: store.news.cards.length > 0,
+      searched: Boolean(store.news.lastQuery),
+      hasError: Boolean(store.news.searchError),
+      allLoaded: store.news.cards.length >= store.news.total,
     });
   }
 

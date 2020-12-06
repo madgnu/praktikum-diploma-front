@@ -15,7 +15,7 @@ export default class CardList extends Component {
 
   render() {
     const state = this.props.store.getState();
-    const cards = state.cards.map((el) => parser `<${Card} data=${el} store=${this.props.store}/>`);
+    const cards = state.news.cards.map((el) => parser `<${Card} data=${el} store=${this.props.store}/>`);
     return parser `
       <div class="search-results__list card-list">
         ${cards}
@@ -26,7 +26,7 @@ export default class CardList extends Component {
   mapStoreToState = () => {
     const store = this.props.store.getState();
     this.setState({
-      cards: store.cards,
+      cards: store.news.cards,
     })
   }
 
