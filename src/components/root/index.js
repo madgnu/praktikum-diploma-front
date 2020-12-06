@@ -20,6 +20,7 @@ export default class Root extends Component {
 
     this.state = {
       modalOpened: false,
+      navOpened: false,
     };
   }
 
@@ -34,10 +35,12 @@ export default class Root extends Component {
 
   render() {
     const overhangHeaderClass = this.props.overhangHeader ? 'container_overhang' : '';
+    const modalOpenedClass = this.state.modalOpened ? 'root_expanded_modal' : '';
+    const navExpandedClass = this.state.navOpened ? 'root_expanded_nav' : '';
     return parser `
-      <div className="root">
+      <div className=${`root ${modalOpenedClass} ${navExpandedClass}`}>
         <div className=${`container container_slim container_dashed ${overhangHeaderClass}`}>
-          <${Header} store=${this.props.store} pageName=${this.props.pageName} />
+          <${Header} store=${this.props.store} pageName=${this.props.pageName} redirectOnSignout=${this.props.redirectOnSignout} />
         </div>
         <main className="root__content">
           ${this.props.children}
@@ -51,11 +54,12 @@ export default class Root extends Component {
     const store = this.props.store.getState();
     this.setState({
       modalOpened: store.modal.modalOpened,
+      navOpened: store.modal.navOpened,
     });
   }
 
   shouldComponentUpdate(nextState) {
-    return this.state.modalOpened !== nextState.modalOpened;
+    return this.state.modalOpened !== nextState.modalOpened || this.state.navOpened !== nextState.navOpened;
   }
 
   componentDidMount() {

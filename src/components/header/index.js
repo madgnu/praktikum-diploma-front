@@ -9,6 +9,8 @@ import Component from '../../modules/component';
 import parser from '../../modules/parser';
 import signout from '../../actions/signout';
 import openModal from '../../actions/openModal';
+import closeModal from '../../actions/closeModal';
+import { collapseNav, expandNav } from '../../actions/nav';
 
 export default class Header extends Component {
   constructor(props) {
@@ -20,12 +22,23 @@ export default class Header extends Component {
 
   onClickSignout = (event) => {
     event.preventDefault();
-    this.props.store.dispatch(signout());
+    this.props.store.dispatch(signout(this.props.redirectOnSignout));
   }
 
   onClickLogin = (event)  => {
     event.preventDefault();
     this.props.store.dispatch(openModal('login'));
+  }
+
+  onClickExpander = (event) => {
+    event.preventDefault();
+    if (this.state.modalOpened) {
+      return this.props.store.dispatch(closeModal());
+    }
+    if (this.state.navOpened) {
+      return this.props.store.dispatch(collapseNav());
+    }
+    this.props.store.dispatch(expandNav());
   }
 
   render() {
@@ -48,7 +61,7 @@ export default class Header extends Component {
         <div className="header__minimal">
           <a className="header__logo" href="./">NewsExplorer</a>
           <div className="header__menu-toggler">
-            <button className="button button_style_glyph button_icon_smart-expander"></button>
+            <button className="button button_style_glyph button_icon_smart-expander" onClick=${this.onClickExpander}></button>
           </div>
         </div>
         <div className="header__links">
@@ -64,10 +77,12 @@ export default class Header extends Component {
   }
 
   mapStoreToState = () => {
-    const store = this.props.store.getState().user;
+    const { user, modal } = this.props.store.getState();
     this.setState({
-      loggedIn: store.loggedIn,
-      name: store.name,
+      loggedIn: user.loggedIn,
+      name: user.name,
+      modalOpened: modal.modalOpened,
+      navOpened: modal.navOpened,
     });
   }
 

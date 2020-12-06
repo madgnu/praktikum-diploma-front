@@ -18,3 +18,6 @@ export const  USER_SIGNIN_SUCCESS = 'USER_SIGNIN_SUCCESS';
 
 export const MODAL_OPEN = 'MODAL_OPEN';
 export const MODAL_CLOSE = 'MODAL_CLOSE';;
+
+export const NAV_EXPAND = 'NAV_EXPAND';
+export const NAV_COLLAPSE = 'NAV_COLLAPSE';
