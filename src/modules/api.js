@@ -13,7 +13,7 @@ export default class Api {
     const paramsParts = [];
     if (params) {
       for (let [k, v] of Object.entries(params)) {
-        if (calculatedPath.indexOf(`:${k}`)) {
+        if (calculatedPath.indexOf(`:${k}`) > -1) {
           calculatedPath = calculatedPath.replace(`:${k}`, v);
         } else {
           paramsParts.push(`${k}=${v}`);

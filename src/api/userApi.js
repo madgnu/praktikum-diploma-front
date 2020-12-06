@@ -1,3 +1,4 @@
+import { backendBaseUrl } from '../config';
 import Api from '../modules/api';
 
 const apiConfig = {
@@ -31,5 +32,5 @@ const defaultHeaders = {
   'Content-Type': 'application/json',
 }
 
-const createUserApi = (headers = defaultHeaders) => new Api('https://praktikum-diploma-api.madg.nu', { ...defaultHeaders, ...headers }, apiConfig);
+const createUserApi = (headers = defaultHeaders) => new Api(backendBaseUrl, { ...defaultHeaders, ...headers }, apiConfig);
 export default createUserApi;
