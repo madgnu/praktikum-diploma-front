@@ -12,31 +12,21 @@ import loggerMiddleware from '../../middlewares/logger';
 import thunkMiddleware from '../../middlewares/thunk';
 
 import newsReducer from '../../reducers/news';
-
-import Api from '../../modules/api';
+import userReducer from '../../reducers/user';
 
 import Root from '../../components/root';
 import SearchResults from '../../components/search-results';
 import Headliner from '../../components/headliner';
 import About from '../../components/about';
-
-const newsApi = new Api('http://newsapi.org/v2', { 'Authorization' : 'ea576070b4ad4780b5492b54195ee10b' }, {
-  search: {
-    method: 'GET',
-    path: '/everything'
-  }
-});
-
-const initialState = {
-  newsApi,
-  cards: [],
-}
+import signin from '../../actions/signin';
 
 const reducer = flux.combineReducers({
   news: newsReducer,
+  user: userReducer,
 });
 
-const store = flux.applyMiddleware(flux.createStore(reducer, initialState), thunkMiddleware, loggerMiddleware);
+const store = flux.applyMiddleware(flux.createStore(reducer), thunkMiddleware, loggerMiddleware);
+store.dispatch(signin('madgnu@madg.nu', 'Str0ngPassword'));
 
 render(parser `
   <${Root} store=${store}>

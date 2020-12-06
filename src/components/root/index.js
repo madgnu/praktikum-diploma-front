@@ -18,7 +18,7 @@ export default class Root extends Component {
     return parser `
       <>
         <div className="container container_slim container_overhang container_dashed">
-          <${Header} />
+          <${Header} store=${this.props.store} />
         </div>
         <main className="root__content">
           ${this.props.children}

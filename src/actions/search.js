@@ -1,4 +1,4 @@
-import { FETCH_NEWS_REQUEST, FETCH_NEWS_SUCCESS, FETCH_NEWS_ERROR } from "./types";
+import { FETCH_NEWS_REQUEST, FETCH_NEWS_SUCCESS, FETCH_NEWS_ERROR } from './types';
 
 const dataMockup = {
   status: "ok",
@@ -49,7 +49,7 @@ const search = (query) => {
       newsApi,
       lastQuery,
       currentPage = 0,
-    } = getState();
+    } = getState().news;
     const q = query || lastQuery;
     const freshStart = Boolean(query);
     const page = freshStart ? 1 : currentPage + 1;

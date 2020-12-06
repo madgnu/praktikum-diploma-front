@@ -4,6 +4,7 @@ export function applyMiddleware(store, ...middlewares) {
   const newStore = Object.assign({}, store);
   reverseMiddlewares.forEach((middleware) => (dispatch = middleware(newStore)(dispatch)));
   newStore.dispatch = dispatch;
+  dispatch({ type: 'INIT' });
   return newStore;
 }
 

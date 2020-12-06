@@ -1,6 +1,7 @@
 import { FETCH_NEWS_ERROR, FETCH_NEWS_REQUEST, FETCH_NEWS_SUCCESS } from '../actions/types';
+import newsApi from '../api/newsApi';
 
-export default function newsReducer(state, action) {
+export default function newsReducer(state = { cards: [], newsApi }, action) {
   switch (action.type) {
     case FETCH_NEWS_REQUEST: {
       const { query: lastQuery, freshStart } = action.payload;

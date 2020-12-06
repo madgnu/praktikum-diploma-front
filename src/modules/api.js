@@ -1,5 +1,5 @@
 export default class Api {
-  constructor(baseUrl, headers, config) {
+  constructor(baseUrl, headers = {}, config) {
     this._baseUrl = baseUrl;
     this._headers = headers;
     for (let [k, v] of Object.entries(config)) {

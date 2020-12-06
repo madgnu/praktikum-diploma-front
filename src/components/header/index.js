@@ -7,9 +7,31 @@ import './__menu-toggler/header__menu-toggler.css';
 
 import Component from '../../modules/component';
 import parser from '../../modules/parser';
+import signout from '../../actions/signout';
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false,
+    }
+  }
+
+  onClickSignout = (event) => {
+    event.preventDefault();
+    this.props.store.dispatch(signout());
+  }
+
+  onClickLogin = (event)  => {
+    event.preventDefault();
+  }
+
   render() {
+    const { name, loggedIn } = this.state;
+
+    const buttonStyle = `button button_style_transparent ${ loggedIn ? 'button_icon_logout' : '' }`;
+    const buttonName = loggedIn ? name : 'Авторизоваться';
+    const buttonAction = loggedIn ? this.onClickSignout : this.onClickLogin;
     return parser `
       <header class="header">
         <div class="header__minimal">
@@ -24,13 +46,32 @@ export default class Header extends Component {
               <a class="nav__link nav__link_active" href="./">Главная</a>
             </li>
             <li class="nav__element">
-              <a class="button button_style_transparent" href="./">
-                Авторизоваться
-              </a>
+              <a class=${buttonStyle} onClick=${buttonAction} href="./">${buttonName}</a>
             </li>
           </menu>
         </div>
       </header>
     `;
+  }
+
+  mapStoreToState = () => {
+    const store = this.props.store.getState().user;
+    this.setState({
+      loggedIn: store.loggedIn,
+      name: store.name,
+    });
+  }
+
+  shouldComponentUpdate(nextState) {
+    return this.state.loggedIn !== nextState.loggedIn;
+  }
+
+  componentDidMount() {
+    const store = this.props.store;
+    this.unsubStore = store.subscribe(this.mapStoreToState);
+  }
+
+  componentWillUnmount() {
+    this.unsubStore();
   }
 }
