@@ -1,4 +1,5 @@
 import './search-results.css';
+import './_hide/search-results_hide.css';
 import './__list/search-results__list.css';
 import './__action-more/search-results__action-more.css';
 import './__loading-icon/search-results__loading-icon.css';
@@ -35,9 +36,9 @@ export default class SearchResults extends Component {
     if (this.state.searched && !this.state.loading && !this.state.hasCards && !this.state.hasError) {
       return parser `
         <>
-          <img class="search-results__not-found-icon" src=${iconNotFound} alt="Грустный смайлик, сообщающий о том, что ничего не найдено" />
-          <h2 class="search-results__subtitle title title_size_s">Ничего не найдено</h2>
-          <p class="search-results__message">К сожалению по вашему запросу ничего не найдено.</p>
+          <img className="search-results__not-found-icon" src=${iconNotFound} alt="Грустный смайлик, сообщающий о том, что ничего не найдено" />
+          <h2 className="search-results__subtitle title title_size_s">Ничего не найдено</h2>
+          <p className="search-results__message">К сожалению по вашему запросу ничего не найдено.</p>
         </>
       `;
     }
@@ -48,9 +49,9 @@ export default class SearchResults extends Component {
     if (this.state.hasError) {
       return parser `
         <>
-          <img class="search-results__not-found-icon" src=${iconNotFound} alt="Грустный смайлик, сообщающий о том, что все сломалось" />
-          <h2 class="search-results__subtitle title title_size_s">Произошла ошибка</h2>
-          <p class="search-results__message">К сожалению при выполнении запроса произошла ошибка.</p>
+          <img className="search-results__not-found-icon" src=${iconNotFound} alt="Грустный смайлик, сообщающий о том, что все сломалось" />
+          <h2 className="search-results__subtitle title title_size_s">Произошла ошибка</h2>
+          <p className="search-results__message">К сожалению при выполнении запроса произошла ошибка.</p>
         </>
       `;
     }
@@ -61,8 +62,8 @@ export default class SearchResults extends Component {
     if (this.state.loading) {
       return parser `
         <>
-          <div class="search-results__loading-icon"></div>
-          <h3 class="search-results__message">Идет поиск новостей...</h3>
+          <div className="search-results__loading-icon"></div>
+          <h3 className="search-results__message">Идет поиск новостей...</h3>
         </>
       `;
     }
@@ -72,7 +73,7 @@ export default class SearchResults extends Component {
   showMore() {
     const { loading, allLoaded } = this.state;
     if (!loading && !allLoaded) {
-      return parser `<button class="search-results__action-more button button_style_secondary" onClick=${this.onClickLoadMore}>Показать еще</button>`;
+      return parser `<button className="search-results__action-more button button_style_secondary" onClick=${this.onClickLoadMore}>Показать еще</button>`;
     }
     return null;
   }
@@ -81,7 +82,7 @@ export default class SearchResults extends Component {
     if (this.state.hasCards) {
       return parser `
         <>
-          <h2 class="search-results__title title title_size_m">Результаты поиска</h2>
+          <h2 className="search-results__title title title_size_m">Результаты поиска</h2>
           <${CardList} store=${this.props.store} />
           ${this.showMore()}
         </>
@@ -91,8 +92,9 @@ export default class SearchResults extends Component {
   }
 
   render() {
+    const hidingClass = !(this.state.hasCards || this.state.loading || this.state.hasError) ? 'search-results_hide' : '';
     return parser `
-      <section class="root__section root__section_theme_gray container search-results">
+      <section className=${`root__section root__section_theme_gray container search-results ${hidingClass}`}>
         ${this.partCards()}
         ${this.partLoading()}
         ${this.partNotFound()}

@@ -13,9 +13,6 @@ import parser from '../../modules/parser';
 import Header from '../header';
 import Footer from '../footer';
 import Modal from '../modal';
-import Form from '../form';
-
-import signin from '../../actions/signin';
 
 export default class Root extends Component {
   constructor(props) {
@@ -26,17 +23,10 @@ export default class Root extends Component {
     };
   }
 
-  signin = (data) => {
-    this.props.store.dispatch(signin(data.email, data.password));
-  }
-
   renderModal() {
     if (this.state.modalOpened) {
       return parser `
-        <${Modal} title="Вход" store=${this.props.store}>
-          <${Form} store=${this.props.store} onSubmit=${this.signin} />
-          <div className="modal__text">или <a className="modal__link" href="./">Зарегистрироваться</a></div>
-        </${Modal}>
+        <${Modal} store=${this.props.store} />
       `;
     }
     return null;

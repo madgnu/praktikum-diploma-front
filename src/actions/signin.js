@@ -32,7 +32,7 @@ export const signinSuccess  = (token) => {
   }
 }
 
-export const signin = (email, password) => {
+export const signin = ({ email, password }) => {
   return async (dispatch, getState) => {
     try {
       const { userApi } = getState().user;

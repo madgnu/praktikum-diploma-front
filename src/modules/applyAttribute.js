@@ -15,7 +15,7 @@ export default function (node, k, v) {
     node.__key = v;
   } else if (k === "ref") {
     v(node);
-  } else if (k === 'disabled') {
+  } else if (k === 'disabled' || k === 'required') {
     if (v) node.setAttribute(k, v);
     else node.removeAttribute(k);
   } else if (typeof v !== "object" && typeof v !== "function") {

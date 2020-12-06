@@ -38,20 +38,21 @@ export default class Form extends Component {
 
   onSubmit = (event) => {
     event.preventDefault();
+    const store = this.props.store;
     const form = document.forms[this.formName];
     const inputs = [...form.elements].filter((el) => el.tagName === 'INPUT');
     const retData = {};
     inputs.forEach((el) => retData[el.name] = el.value);
-    this.props.onSubmit(retData);
+    store.dispatch(this.state.submitAction(retData));
   }
 
   render() {
-    console.log(this.state);
+    const submitText = this.state.loading ? 'Загружаем...' : this.state.submitName;
     const fieldsMarkup = this.state.fields.map((el) => this.renderField(el));
     return parser `
       <form name=${this.formName} className="modal__form form" action="/" onSubmit=${this.onSubmit}>
         ${fieldsMarkup}
-        <button type="submit" className="form__submit button" disabled=${this.state.loading}>${this.state.submitName}</button>
+        <button type="submit" className="form__submit button" disabled=${this.state.loading}>${submitText}</button>
       </form>
     `;
   }
