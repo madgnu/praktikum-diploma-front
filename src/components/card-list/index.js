@@ -1,1 +1,46 @@
 import './card-list.css';
+
+import Component from '../../modules/component';
+import parser from '../../modules/parser';
+
+import Card from '../card';
+
+export default class CardList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cards: 0,
+    }
+  }
+
+  render() {
+    const state = this.props.store.getState();
+    const { keyMode, cards } = state.news;
+    const cardsMarkup = cards.map((el, i) => parser `<${Card} store=${this.props.store} deleteUnfaved=${this.props.deleteUnfaved} key=${(keyMode === 'numbers') ? i : el._id} />`);
+    return parser `
+      <div class="search-results__list card-list">
+        ${cardsMarkup}
+      </div>
+    `;
+  }
+
+  mapStoreToState = () => {
+    const store = this.props.store.getState();
+    this.setState({
+      cards: store.news.cards,
+    })
+  }
+
+  shouldComponentUpdate(nextState) {
+    return this.state.cards.length !== nextState.cards.length;
+  }
+
+  componentDidMount() {
+    const store = this.props.store;
+    this.unsubStore = store.subscribe(this.mapStoreToState);
+  }
+
+  componentWillUnmount() {
+    this.unsubStore();
+  }
+}

@@ -8,8 +8,6 @@
 * [GhPages](https://madgnu.github.io/praktikum-diploma-front/)
 * [Главная страница](https://madgnu.github.io/praktikum-diploma-front/)
 * [Сохраненные новости](https://madgnu.github.io/praktikum-diploma-front/favorites.html)
-* [Пример - модальное окно](https://madgnu.github.io/praktikum-diploma-front/example-modal.html) Эта страница существует сугубо для облегчения процесса ревью
-* [Пример - развернутая навигация](https://madgnu.github.io/praktikum-diploma-front/example-nav.html) Эта страница также существует сугубо для облегчения процесса ревью
 
 ## Как развернуть
 
