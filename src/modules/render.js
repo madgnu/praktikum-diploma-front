@@ -1,10 +1,10 @@
-import Component from "./component.js";
-import applyAttribute from "./applyAttribute.js";
+import Component from './component.js';
+import applyAttribute from './applyAttribute.js';
 
 function render(vdom, parent) {
-  if (typeof vdom === "string") {
+  if (typeof vdom === 'string') {
     return parent.appendChild(document.createTextNode(vdom));
-  } else if (typeof vdom === "object" && typeof vdom.type === "string") {
+  } else if (typeof vdom === 'object' && typeof vdom.type === 'string') {
     let node = parent;
     if (vdom.type.length > 0) {
       node = parent.appendChild(document.createElement(vdom.type));
@@ -13,7 +13,7 @@ function render(vdom, parent) {
 
     Array.isArray(vdom.children) && vdom.children.forEach((e) => render(e, node));
     return node;
-  } else if (typeof vdom === "object" && typeof vdom.type === "function") {
+  } else if (typeof vdom === 'object' && typeof vdom.type === 'function') {
     return Component.render(vdom, parent);
   }
 }

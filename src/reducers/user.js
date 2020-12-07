@@ -6,7 +6,7 @@ import {
   USER_SIGNIN_SUCCESS,
   USER_SIGNUP_REQUEST,
   USER_SIGNUP_SUCCESS,
-  USER_SIGNUP_ERROR
+  USER_SIGNUP_ERROR,
 } from '../actions/types';
 
 import userApi from '../api/userApi';

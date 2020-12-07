@@ -1,7 +1,7 @@
-import createUserApi from "../api/userApi";
-import closeModal from "./closeModal";
-import loadUser from "./loadUser";
-import { USER_LOGIN_ERROR, USER_LOGIN_REQUEST, USER_SIGNIN_SUCCESS } from "./types";
+import createUserApi from '../api/userApi';
+import closeModal from './closeModal';
+import loadUser from './loadUser';
+import { USER_LOGIN_ERROR, USER_LOGIN_REQUEST, USER_SIGNIN_SUCCESS } from './types';
 
 const signinRequest = () => {
   return {

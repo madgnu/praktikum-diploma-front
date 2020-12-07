@@ -3,6 +3,6 @@ const thunkMiddleware = (store) => (next) => (action) => {
     return action(store.dispatch, store.getState);
   }
   return next(action);
-}
+};
 
 export default thunkMiddleware;

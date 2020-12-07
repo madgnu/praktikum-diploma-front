@@ -1,4 +1,4 @@
-import { USER_LOGOUT } from "./types";
+import { USER_LOGOUT } from './types';
 
 export default function signout(redirectTo = false) {
   localStorage.removeItem('jwt');

@@ -1,5 +1,5 @@
-import openModal from "./openModal";
-import { USER_SIGNUP_REQUEST, USER_SIGNUP_SUCCESS, USER_SIGNUP_ERROR } from "./types";
+import openModal from './openModal';
+import { USER_SIGNUP_REQUEST, USER_SIGNUP_SUCCESS, USER_SIGNUP_ERROR } from './types';
 
 const signupRequest = () => {
   return {

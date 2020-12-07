@@ -5,7 +5,7 @@ const newsApi = new Api(newsBaseUrl, { 'Content-Type': 'application/json' }, {
   search: {
     method: 'GET',
     path: '/everything',
-  }
+  },
 });
 
 export default newsApi;

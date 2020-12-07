@@ -1,6 +1,6 @@
-import loadFavorites from "./loadFavorites";
+import loadFavorites from './loadFavorites';
 
-const { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_ERROR } = require("./types");
+import { USER_LOGIN_REQUEST, USER_LOGIN_SUCCESS, USER_LOGIN_ERROR } from './types';
 
 const loadUserRequest = () => {
   return {

@@ -1,4 +1,4 @@
-const { FETCH_NEWS_REQUEST, FETCH_NEWS_SUCCESS, FETCH_NEWS_ERROR } = require("./types");
+import { FETCH_NEWS_REQUEST, FETCH_NEWS_SUCCESS, FETCH_NEWS_ERROR } from './types';
 
 const loadStart = () => {
   return {

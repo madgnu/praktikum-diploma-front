@@ -1,6 +1,6 @@
-import signin from "./signin";
-import { signup } from "./signup";
-import { MODAL_OPEN } from "./types";
+import signin from './signin';
+import { signup } from './signup';
+import { MODAL_OPEN } from './types';
 
 const templates = { };
 

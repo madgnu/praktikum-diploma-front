@@ -1,4 +1,4 @@
-import { NAV_COLLAPSE, NAV_EXPAND } from "./types"
+import { NAV_COLLAPSE, NAV_EXPAND } from './types';
 
 export const expandNav = () => {
   return {
