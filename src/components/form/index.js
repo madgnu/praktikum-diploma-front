@@ -20,7 +20,6 @@ export default class Form extends Component {
   }
 
   renderField(field) {
-    console.log(field);
     const fieldId = `${this.formName}_${field.name}`;
 
     return parser `

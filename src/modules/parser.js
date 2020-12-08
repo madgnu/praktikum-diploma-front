@@ -25,71 +25,66 @@ function tokenize(strToParse) {
 }
 
 function parseTag(tagStr, values) {
-  try {
-    let cleanedStr = tagStr.slice(1, -1);
-    let closing = false;
-    let selfClosing = false;
-    if (cleanedStr[0] === '/') {
-      closing = true;
-      cleanedStr = cleanedStr.slice(1);
-    }
-    if (cleanedStr[cleanedStr.length - 1] === '/') {
-      selfClosing = true;
-      cleanedStr = cleanedStr.slice(0, -1);
-    }
-    cleanedStr = cleanedStr.trim();
-
-    // костыльный завод
-    const tagTokens = cleanedStr.split(' ');
-    const tagChunks = [];
-    let inEscape = false;
-    for (let i = 0; i < tagTokens.length; i += 1) {
-      const currentToken = tagTokens[i];
-      const escapeChange = currentToken.match(/"/g) && currentToken.match(/"/g).length % 2 !== 0;
-      if (!inEscape) {
-        tagChunks.push(currentToken);
-      } else {
-        tagChunks[tagChunks.length - 1] += ` ${currentToken}`;
-      }
-      inEscape = escapeChange ? !inEscape : inEscape;
-    }
-
-    let type = tagChunks.shift();
-    if (type === dummy) type = values.shift();
-    const props = {};
-
-    for (let i = 0; i < tagChunks.length; i++) {
-      const el = tagChunks[i];
-      let [k, v] = ['', ''];
-      if (el.indexOf('=') > -1) {
-        [k, v] = el.split('=');
-        if (v[0] === '"') v = v.slice(1, -1);
-        if (v === dummy) v = values.shift();
-      } else if (el === dummy) {
-        console.log(metaObj);
-        const metaObj = values.shift();
-        const metaKeys = Object.keys(metaObj).map((el) => `${el}=${dummy}`);
-        const metaValues = Object.values(metaObj);
-        tagChunks.splice(i + 1, 0, ...metaKeys);
-        values.unshift(...metaValues);
-        continue;
-      } else {
-        k = el;
-        v = true;
-      }
-      props[k] = v;
-    }
-
-    return {
-      type,
-      props,
-      children: [],
-      closing,
-      selfClosing,
-    };
-  } catch (err) {
-    throw err;
+  let cleanedStr = tagStr.slice(1, -1);
+  let closing = false;
+  let selfClosing = false;
+  if (cleanedStr[0] === '/') {
+    closing = true;
+    cleanedStr = cleanedStr.slice(1);
   }
+  if (cleanedStr[cleanedStr.length - 1] === '/') {
+    selfClosing = true;
+    cleanedStr = cleanedStr.slice(0, -1);
+  }
+  cleanedStr = cleanedStr.trim();
+
+  // костыльный завод
+  const tagTokens = cleanedStr.split(' ');
+  const tagChunks = [];
+  let inEscape = false;
+  for (let i = 0; i < tagTokens.length; i += 1) {
+    const currentToken = tagTokens[i];
+    const escapeChange = currentToken.match(/"/g) && currentToken.match(/"/g).length % 2 !== 0;
+    if (!inEscape) {
+      tagChunks.push(currentToken);
+    } else {
+      tagChunks[tagChunks.length - 1] += ` ${currentToken}`;
+    }
+    inEscape = escapeChange ? !inEscape : inEscape;
+  }
+
+  let type = tagChunks.shift();
+  if (type === dummy) type = values.shift();
+  const props = {};
+
+  for (let i = 0; i < tagChunks.length; i++) {
+    const el = tagChunks[i];
+    let [k, v] = ['', ''];
+    if (el.indexOf('=') > -1) {
+      [k, v] = el.split('=');
+      if (v[0] === '"') v = v.slice(1, -1);
+      if (v === dummy) v = values.shift();
+    } else if (el === dummy) {
+      const metaObj = values.shift();
+      const metaKeys = Object.keys(metaObj).map((el) => `${el}=${dummy}`);
+      const metaValues = Object.values(metaObj);
+      tagChunks.splice(i + 1, 0, ...metaKeys);
+      values.unshift(...metaValues);
+      continue;
+    } else {
+      k = el;
+      v = true;
+    }
+    props[k] = v;
+  }
+
+  return {
+    type,
+    props,
+    children: [],
+    closing,
+    selfClosing,
+  };
 }
 
 function buildVDOM(chunks, values) {
