@@ -20,17 +20,16 @@ export default class Form extends Component {
   }
 
   renderField(field) {
+    console.log(field);
     const fieldId = `${this.formName}_${field.name}`;
+
     return parser `
       <div className="form__field">
         <label className="form__label" for=${fieldId}>${field.label}</label>
-        <input
+        <input ${field.definition}
           className="form__input input input_style_modal"
-          type=${field.type}
           name="${field.name}"
           id=${fieldId}
-          placeholder=${field.placeholder}
-          required=${field.required}
         />
         <span className="form__error">${field.errMessage}</span>
       </div>`;

@@ -18,19 +18,26 @@ templates.login = {
   switchAction: () => openModal('register'),
   form: {
     fields: [{
-      type: 'email',
-      label: 'Email',
       name: 'email',
-      placeholder: 'Введите почту',
-      required: true,
+      label: 'Email',
       errMessage: 'Неправильный формат email',
+      definition: {
+        type: 'email',
+        placeholder: 'Введите почту',
+        required: true,
+      }
     }, {
-      type: 'password',
-      label: 'Пароль',
       name: 'password',
-      placeholder: 'Введите пароль',
-      required: true,
+      label: 'Пароль',
       errMessage: 'Пароль должен содержать от 8 до 15 символов, а также минимум 1 латинскую заглавную букву, 1 цифру и 1 латинскую строчную букву',
+      definition: {
+        type: 'password',
+        placeholder: 'Введите пароль',
+        required: true,
+        pattern: '^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,15}$',
+        minlength: 8,
+        maxlength: 15,
+      }
     }],
     submitName: 'Войти',
     submitAction: signin,
@@ -44,28 +51,38 @@ templates.register = {
   switchAction: () => openModal('login'),
   form: {
     fields: [{
-      type: 'email',
-      label: 'Email',
       name: 'email',
-      placeholder: 'Введите почту',
-      required: true,
+      label: 'Email',
       errMessage: 'Неправильный формат email',
+      definition: {
+        type: 'email',
+        placeholder: 'Введите почту',
+        required: true,
+      }
     }, {
-      type: 'password',
-      label: 'Пароль',
       name: 'password',
-      placeholder: 'Введите пароль',
-      required: true,
+      label: 'Пароль',
       errMessage: 'Пароль должен содержать от 8 до 15 символов, а также минимум 1 латинскую заглавную букву, 1 цифру и 1 латинскую строчную букву',
+      definition: {
+        type: 'password',
+        placeholder: 'Введите пароль',
+        required: true,
+        pattern: '^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,15}$',
+        minlength: 8,
+        maxlength: 15,
+      }
     }, {
-      type: 'text',
       label: 'Имя',
       name: 'name',
-      placeholder: 'Введите своё имя',
-      required: true,
-      minlength: 2,
-      maxlength: 30,
       errMessage: 'Имя должно содержать от 2 до 30 символов',
+      definition: {
+        type: 'text',
+        placeholder: 'Введите своё имя',
+        required: true,
+        minlength: 2,
+        maxlength: 30,
+
+      }
     }],
     submitName: 'Зарегистрироваться',
     submitAction: signup,

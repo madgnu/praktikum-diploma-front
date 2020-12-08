@@ -97,12 +97,9 @@ export default class Card extends Component {
   componentDidMount() {
     const store = this.props.store;
     this.unsubStore = store.subscribe(this.mapStoreToState);
-
-    document.addEventListener('keydown', this.escHandler);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.escHandler);
     this.unsubStore();
   }
 }

@@ -8,6 +8,8 @@ import './__link/modal__link.css';
 
 import Component from '../../modules/component';
 import parser from '../../modules/parser';
+import createRef from '../../modules/refs';
+
 import closeModal from '../../actions/closeModal';
 import Form from '../form';
 
@@ -16,6 +18,8 @@ export default class Modal extends Component {
     super(props);
     const store = this.props.store.getState();
     this.state = { ...store.modal };
+
+    this.overlayRef = createRef();
   }
 
   closeModal = () => {
@@ -26,6 +30,10 @@ export default class Modal extends Component {
     if (event.code === 'Escape') {
       this.closeModal();
     }
+  }
+
+  overlayHandler = (event) => {
+    if (this.overlayRef.current() === event.target) this.closeModal();
   }
 
   renderForm() {
@@ -42,7 +50,7 @@ export default class Modal extends Component {
 
   render() {
     return parser `
-      <div className="modal">
+      <div className="modal" onClick=${this.overlayHandler} ref=${this.overlayRef}>
         <div className="modal__container">
           <div className="modal__close-icon">
             <button className="button button_style_glyph button_icon_close" onClick=${this.closeModal} />

@@ -57,18 +57,28 @@ function parseTag(tagStr, values) {
     let type = tagChunks.shift();
     if (type === dummy) type = values.shift();
     const props = {};
-    tagChunks.forEach((el) => {
+
+    for (let i = 0; i < tagChunks.length; i++) {
+      const el = tagChunks[i];
       let [k, v] = ['', ''];
-      if (el.indexOf('=')) {
+      if (el.indexOf('=') > -1) {
         [k, v] = el.split('=');
         if (v[0] === '"') v = v.slice(1, -1);
         if (v === dummy) v = values.shift();
+      } else if (el === dummy) {
+        console.log(metaObj);
+        const metaObj = values.shift();
+        const metaKeys = Object.keys(metaObj).map((el) => `${el}=${dummy}`);
+        const metaValues = Object.values(metaObj);
+        tagChunks.splice(i + 1, 0, ...metaKeys);
+        values.unshift(...metaValues);
+        continue;
       } else {
         k = el;
         v = true;
       }
       props[k] = v;
-    });
+    }
 
     return {
       type,
@@ -78,7 +88,7 @@ function parseTag(tagStr, values) {
       selfClosing,
     };
   } catch (err) {
-    console.log(tarStr, err);
+    throw err;
   }
 }
 

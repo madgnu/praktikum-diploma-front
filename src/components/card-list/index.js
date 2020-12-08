@@ -8,14 +8,12 @@ import Card from '../card';
 export default class CardList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      cards: 0,
-    }
+    const { cards = [], keyMode = 'numbers' } = this.props.store.getState().news;
+    this.state = { keyMode, cards };
   }
 
   render() {
-    const state = this.props.store.getState();
-    const { keyMode, cards } = state.news;
+    const { keyMode, cards } = this.state;
     const cardsMarkup = cards.map((el, i) => parser `<${Card} store=${this.props.store} deleteUnfaved=${this.props.deleteUnfaved} key=${(keyMode === 'numbers') ? i : el._id} />`);
     return parser `
       <div class="search-results__list card-list">
@@ -26,9 +24,8 @@ export default class CardList extends Component {
 
   mapStoreToState = () => {
     const store = this.props.store.getState();
-    this.setState({
-      cards: store.news.cards,
-    })
+    const { keyMode, cards } = store.news;
+    this.setState({ keyMode, cards });
   }
 
   shouldComponentUpdate(nextState) {
