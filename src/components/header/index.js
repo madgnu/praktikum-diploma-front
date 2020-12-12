@@ -48,8 +48,8 @@ export default class Header extends Component {
     if (loggedIn) links.push({ href: './favorites.html', title: 'Сохраненные статьи' });
     const linksMarkup = links.map((el) =>
       parser `
-        <li class="nav__element" key=${el.title}>
-          <a class=${`nav__link ${ (el.title === this.props.pageName) ? 'nav__link_active' : '' }`} href=${el.href}>${el.title}</a>
+        <li className="nav__element" key=${el.title}>
+          <a className=${`nav__link ${ (el.title === this.props.pageName) ? 'nav__link_active' : '' }`} href=${el.href}>${el.title}</a>
         </li>`
     );
 

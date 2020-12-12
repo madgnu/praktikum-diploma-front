@@ -15,9 +15,22 @@ function patch(vdom, node, parent = node.parentNode) {
     const activeNode = document.activeElement;
     const keyChields = {};
     node.childNodes.forEach((el, i) => (keyChields[`${el.__key || `__DUMMY_KEY__${i}`}`] = el));
+
+    let prevNode =  null;
     vdom.children.forEach((el, i) => {
       const key = (el.props && el.props.key) || `__DUMMY_KEY__${i}`;
-      node.appendChild(keyChields[key] ? patch(el, keyChields[key]) : render(el, node));
+      let currentNode = null;
+      if (keyChields[key]) {
+        currentNode = patch(el, keyChields[key]);
+      } else {
+        currentNode = render(el, node);
+        if (i > 0) {
+          prevNode.after(currentNode);
+        } else {
+          node.appendChild(currentNode);
+        }
+      }
+      prevNode = currentNode;
       delete keyChields[key];
     });
     for (let k in keyChields) {
@@ -69,8 +82,13 @@ class Component {
   static patch(vdom, node, parent = node.parentNode) {
     const props = Object.assign({}, vdom.props, { children: vdom.children });
     if (node.__instance && node.__instance.constructor === vdom.type) {
-      node.__instance.props = props;
-      return patch(node.__instance.render(), node, parent);
+      const instance = node.__instance;
+      const willPatch = instance.shouldComponentUpdate(instance.state, props);
+      instance.props = props;
+      if (willPatch) {
+        return patch(node.__instance.render(), node, parent);
+      }
+      return node;
     } else if (Component.isPrototypeOf(vdom.type)) {
       const newNode = Component.render(vdom, parent);
       return parent ? parent.replaceChild(newNode, node) && newNode : newNode;
@@ -82,7 +100,7 @@ class Component {
     if (this.__node) {
       const newState = Object.assign({}, this.state, nextState);
       const oldState = this.state;
-      const willUpdate = this.shouldComponentUpdate(nextState);
+      const willUpdate = this.shouldComponentUpdate(nextState, this.props);
       if (willUpdate) {
         this.componentWillUpdate(this.props, nextState);
         this.state = newState;
@@ -94,8 +112,8 @@ class Component {
     }
   }
 
-  shouldComponentUpdate(nextState) {
-    return nextState !== this.state;
+  shouldComponentUpdate(nextState, nextProps) {
+    return (nextState !== this.state) || (nextProps !== this.props);
   }
 
   componentDidMount() {
