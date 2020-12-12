@@ -8,6 +8,8 @@
   outline: none;
   border: none;
   box-sizing: content-box;
+  border: 1px double transparent;
+  background-clip: padding-box;
 }
 
 .input:focus {
