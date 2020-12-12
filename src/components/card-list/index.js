@@ -1,7 +1,6 @@
 import './card-list.css';
 
 import Component from '../../modules/component';
-import parser from '../../modules/parser';
 
 import Card from '../card';
 
@@ -14,8 +13,8 @@ export default class CardList extends Component {
 
   render() {
     const { keyMode, cards } = this.state;
-    const cardsMarkup = cards.map((el, i) => parser `<${Card} store=${this.props.store} deleteUnfaved=${this.props.deleteUnfaved} key=${(keyMode === 'numbers') ? i : el._id} />`);
-    return parser `
+    const cardsMarkup = cards.map((el, i) => this.parser `<${Card} deleteUnfaved=${this.props.deleteUnfaved} key=${(keyMode === 'numbers') ? i : el._id} />`);
+    return this.parser `
       <div class="search-results__list card-list">
         ${cardsMarkup}
       </div>

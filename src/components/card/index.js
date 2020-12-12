@@ -10,7 +10,6 @@ import './__title/card__title.css';
 import './__main-info/card__main-info.css';
 
 import Component from '../../modules/component';
-import parser from '../../modules/parser';
 
 import formatDate from '../../helpers/formatDate';
 
@@ -43,7 +42,7 @@ export default class Card extends Component {
 
   renderHint() {
     if (!this.state.loggedIn) {
-      return parser `<button className="button button_style_sub-tooltip">Войдите, чтобы сохранять статьи</button>`;
+      return this.parser `<button className="button button_style_sub-tooltip">Войдите, чтобы сохранять статьи</button>`;
     }
     return null;
   }
@@ -51,7 +50,7 @@ export default class Card extends Component {
   renderKeyword() {
     const { keyword } = this.state.data;
     if (keyword) {
-      return parser `<button class="button button_style_tooltip">${keyword}</button>`;
+      return this.parser `<button class="button button_style_tooltip">${keyword}</button>`;
     }
   }
 
@@ -61,7 +60,7 @@ export default class Card extends Component {
     if (this.state._id) {
       bookedClass = this.props.deleteUnfaved ? 'button_icon_trash' : 'button_icon_booked';
     }
-    return parser `
+    return this.parser `
       <div className="card">
         <div className="card__header">
           <div className="card__toolbar">

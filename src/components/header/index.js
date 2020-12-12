@@ -6,7 +6,7 @@ import './__minimal/header__minimal.css';
 import './__menu-toggler/header__menu-toggler.css';
 
 import Component from '../../modules/component';
-import parser from '../../modules/parser';
+
 import signout from '../../actions/signout';
 import openModal from '../../actions/openModal';
 import closeModal from '../../actions/closeModal';
@@ -47,7 +47,7 @@ export default class Header extends Component {
     const links = [{ href: './', title: 'Главная' }];
     if (loggedIn) links.push({ href: './favorites.html', title: 'Сохраненные статьи' });
     const linksMarkup = links.map((el) =>
-      parser `
+      this.parser `
         <li className="nav__element" key=${el.title}>
           <a className=${`nav__link ${ (el.title === this.props.pageName) ? 'nav__link_active' : '' }`} href=${el.href}>${el.title}</a>
         </li>`
@@ -56,7 +56,7 @@ export default class Header extends Component {
     const buttonStyle = `button button_style_transparent ${ loggedIn ? 'button_icon_logout' : '' }`;
     const buttonName = loggedIn ? name : 'Авторизоваться';
     const buttonAction = loggedIn ? this.onClickSignout : this.onClickLogin;
-    return parser `
+    return this.parser `
       <header className="header">
         <div className="header__minimal">
           <a className="header__logo" href="./">NewsExplorer</a>

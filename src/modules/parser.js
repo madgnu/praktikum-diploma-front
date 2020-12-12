@@ -1,6 +1,8 @@
 const dummy = `__DUMMY__${Date.now()}__`;
 const meta = `__META__${Date.now()}__`;
 
+const PROVIDER = 'Provider';
+
 const vDomTemplates = { };
 
 function djb2(str) {
@@ -68,6 +70,14 @@ function parseTag(tagStr) {
   }
 
   let type = tagChunks.shift();
+
+  const isProvider = type.substring(0, PROVIDER.length) === PROVIDER;
+  const contextData = { isProvider };
+  if (isProvider) {
+    const contextName = type.split('.')[1];
+    contextData.contextName = contextName;
+  }
+
   const props = {};
 
   for (let i = 0; i < tagChunks.length; i++) {
@@ -87,11 +97,12 @@ function parseTag(tagStr) {
   }
 
   return {
-    type,
+    type: isProvider ? '' : type,
     props,
     children: [],
     closing,
     selfClosing,
+    ...contextData,
   };
 }
 
@@ -131,7 +142,7 @@ function buildVDOM(chunks) {
   return root.children[0];
 }
 
-function appendValues(vDomTemplate, values) {
+function appendValues(vDomTemplate, values, context = {}) {
   if (vDomTemplate === dummy) return values.shift();
 
   if (typeof vDomTemplate !== 'object') return vDomTemplate;
@@ -139,6 +150,7 @@ function appendValues(vDomTemplate, values) {
   const ret = {
     type: null,
     props: {},
+    context: { ...context },
     children: [],
   };
 
@@ -150,7 +162,11 @@ function appendValues(vDomTemplate, values) {
     } else {
       if (k === dummy) k = values.shift();
       if (v === dummy) v = values.shift();
-      ret.props[k] = v;
+      if (vDomTemplate.isProvider) {
+        ret.context[vDomTemplate.contextName] = v;
+      } else {
+        ret.props[k] = v;
+      }
     }
   }
 
@@ -165,7 +181,7 @@ function appendValues(vDomTemplate, values) {
         ret.children.push(v);
       };
     } else {
-      const child = appendValues(el, values);
+      const child = appendValues(el, values, ret.context);
       if (child) ret.children.push(child);
     }
   });
@@ -182,7 +198,7 @@ function parser(unparsedString, ...values) {
     vDomTemplates[hash] = buildVDOM(tokens);
   }
 
-  return appendValues(vDomTemplates[hash], values);
+  return appendValues(vDomTemplates[hash], values, this && this.__context);
 }
 
 export default parser;

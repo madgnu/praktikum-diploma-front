@@ -13,9 +13,11 @@ import initializeStore from '../common';
 const store = initializeStore();
 
 render(parser `
-  <${Root} store=${store} pageName="Главная" overhangHeader=${true}>
-    <${Headliner} store=${store} />
-    <${SearchResults} store=${store} />
-    <${About} />
-  </${Root}>
+  <Provider.store value=${store}>
+    <${Root} pageName="Главная" overhangHeader=${true}>
+      <${Headliner} />
+      <${SearchResults} />
+      <${About} />
+    </${Root}>
+  </Provider.store>
 `, document.querySelector('body'));

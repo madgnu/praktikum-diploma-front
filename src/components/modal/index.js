@@ -7,7 +7,6 @@ import './__text/modal__text.css';
 import './__link/modal__link.css';
 
 import Component from '../../modules/component';
-import parser from '../../modules/parser';
 import createRef from '../../modules/refs';
 
 import closeModal from '../../actions/closeModal';
@@ -38,7 +37,7 @@ export default class Modal extends Component {
 
   renderForm() {
     if (this.state.form) {
-      return parser `<${Form} store=${this.props.store} />`;
+      return this.parser `<${Form} />`;
     }
     return null;
   }
@@ -49,7 +48,7 @@ export default class Modal extends Component {
   }
 
   render() {
-    return parser `
+    return this.parser `
       <div className="modal" onClick=${this.overlayHandler} ref=${this.overlayRef}>
         <div className="modal__container">
           <div className="modal__close-icon">

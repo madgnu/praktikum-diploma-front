@@ -9,7 +9,6 @@ import './__title/search-results__title.css';
 import './__subtitle/search-results__subtitle.css';
 
 import Component from '../../modules/component';
-import parser from '../../modules/parser';
 
 import search from '../../actions/search';
 
@@ -34,7 +33,7 @@ export default class SearchResults extends Component {
 
   partNotFound() {
     if (this.state.searched && !this.state.loading && !this.state.hasCards && !this.state.hasError) {
-      return parser `
+      return this.parser `
         <>
           <img className="search-results__not-found-icon" src=${iconNotFound} alt="Грустный смайлик, сообщающий о том, что ничего не найдено" />
           <h2 className="search-results__subtitle title title_size_s">Ничего не найдено</h2>
@@ -47,7 +46,7 @@ export default class SearchResults extends Component {
 
   partHasError() {
     if (this.state.hasError) {
-      return parser `
+      return this.parser `
         <>
           <img className="search-results__not-found-icon" src=${iconNotFound} alt="Грустный смайлик, сообщающий о том, что все сломалось" />
           <h2 className="search-results__subtitle title title_size_s">Произошла ошибка</h2>
@@ -60,7 +59,7 @@ export default class SearchResults extends Component {
 
   partLoading() {
     if (this.state.loading) {
-      return parser `
+      return this.parser `
         <>
           <div className="search-results__loading-icon"></div>
           <h3 className="search-results__message">Идет поиск новостей...</h3>
@@ -73,17 +72,17 @@ export default class SearchResults extends Component {
   showMore() {
     const { loading, allLoaded } = this.state;
     if (!loading && !allLoaded) {
-      return parser `<button className="search-results__action-more button button_style_secondary" onClick=${this.onClickLoadMore}>Показать еще</button>`;
+      return this.parser `<button className="search-results__action-more button button_style_secondary" onClick=${this.onClickLoadMore}>Показать еще</button>`;
     }
     return null;
   }
 
   partCards() {
     if (this.state.hasCards) {
-      return parser `
+      return this.parser `
         <>
           <h2 className="search-results__title title title_size_m">Результаты поиска</h2>
-          <${CardList} store=${this.props.store} deleteUnfaved=${this.props.deleteUnfaved || false} />
+          <${CardList} deleteUnfaved=${this.props.deleteUnfaved || false} />
           ${this.showMore()}
         </>
       `;
@@ -93,7 +92,7 @@ export default class SearchResults extends Component {
 
   render() {
     const hidingClass = !(this.state.hasCards || this.state.loading || this.state.hasError) ? 'search-results_hide' : '';
-    return parser `
+    return this.parser `
       <section className=${`root__section root__section_theme_gray container search-results ${hidingClass}`}>
         ${this.partCards()}
         ${this.partLoading()}

@@ -1,4 +1,5 @@
 import render from './render.js';
+import parser from './parser';
 import applyAttribute from './applyAttribute.js';
 
 function patch(vdom, node, parent = node.parentNode) {
@@ -64,12 +65,14 @@ class Component {
   constructor(props) {
     this.props = props || {};
     this.state = null;
+    this.parser = parser.bind(this);
   }
 
   static render(vdom, parent) {
-    const props = Object.assign({}, vdom.props, { children: vdom.children });
+    const props = Object.assign({}, vdom.context, vdom.props, { children: vdom.children });
     if (Component.isPrototypeOf(vdom.type)) {
       const instance = new vdom.type(props);
+      instance.__context = vdom.context;
       const node = render(instance.render(), parent);
       node.__instance = instance;
       node.__key = vdom.props.key;
@@ -80,7 +83,7 @@ class Component {
   }
 
   static patch(vdom, node, parent = node.parentNode) {
-    const props = Object.assign({}, vdom.props, { children: vdom.children });
+    const props = Object.assign({}, vdom.context, vdom.props, { children: vdom.children });
     if (node.__instance && node.__instance.constructor === vdom.type) {
       const instance = node.__instance;
       const willPatch = instance.shouldComponentUpdate(instance.state, props);

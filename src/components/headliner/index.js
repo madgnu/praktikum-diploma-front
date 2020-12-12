@@ -6,7 +6,6 @@ import './__search-submit/headliner__search-submit.css';
 import './__search-field/headliner__search-field.css';
 
 import Component from '../../modules/component';
-import parser from '../../modules/parser';
 import createRef from '../../modules/refs';
 
 import search from '../../actions/search';
@@ -23,7 +22,7 @@ export default class Headliner extends Component {
   }
 
   render () {
-    return parser `
+    return this.parser `
       <section className="root__section root__section_theme_headliner">
         <div className="root__headliner container">
           <div className="headliner">

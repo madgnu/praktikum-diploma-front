@@ -6,7 +6,6 @@ import './__error/form__error.css';
 import './__field/form__field.css';
 
 import Component from '../../modules/component';
-import parser from '../../modules/parser';
 
 export default class Form extends Component {
   constructor(props) {
@@ -22,7 +21,7 @@ export default class Form extends Component {
   renderField(field) {
     const fieldId = `${this.formName}_${field.name}`;
 
-    return parser `
+    return this.parser `
       <div className="form__field">
         <label className="form__label" for=${fieldId}>${field.label}</label>
         <input ${field.definition}
@@ -47,7 +46,7 @@ export default class Form extends Component {
   render() {
     const submitText = this.state.loading ? 'Загружаем...' : this.state.submitName;
     const fieldsMarkup = this.state.fields.map((el) => this.renderField(el));
-    return parser `
+    return this.parser `
       <form name=${this.formName} className="modal__form form" action="/" onSubmit=${this.onSubmit}>
         ${fieldsMarkup}
         <button type="submit" className="form__submit button" disabled=${this.state.loading}>${submitText}</button>

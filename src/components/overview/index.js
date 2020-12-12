@@ -21,8 +21,8 @@ export default class Overview extends Component {
   renderKeywords() {
     const { keywords } = this.state;
     if (keywords && keywords.length) {
-      const keywordsMarkup = keywords.map((el) => parser `<span class="overview__keyword">${` ${el} `}</span>`);
-      return parser `
+      const keywordsMarkup = keywords.map((el) => this.parser `<span class="overview__keyword">${` ${el} `}</span>`);
+      return this.parser `
         <p class="overview__text">
           По ключевым словам:<span>${keywordsMarkup}</span>
         </p>
@@ -34,7 +34,7 @@ export default class Overview extends Component {
   render() {
     const title = `${this.state.name || 'Пользователь'}, у вас ${this.state.cardsCount || 'нет'} сохранённых статей`;
 
-    return parser `
+    return this.parser `
       <section class="root__section container container_slim overview">
         <h3 class="overview__subtitle">Сохранённые статьи</h3>
         <h2 class="overview__title title title_size_m">${title}</h2>

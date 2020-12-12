@@ -3,11 +3,10 @@ import './__copyright/footer__copyright.css';
 import './__links/footer__links.css';
 
 import Component from '../../modules/component';
-import parser from '../../modules/parser';
 
 export default class Footer extends Component {
   render() {
-    return parser `
+    return this.parser `
       <footer className="root__footer container container_slim footer">
         <span className="footer__copyright">© 2020 Supersite, Powered by News API</span>
         <div className="footer__links">

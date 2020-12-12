@@ -9,11 +9,10 @@ import avatar from './avatar.png';
 import avatar2x from './avatar2x.png';
 
 import Component from '../../modules/component';
-import parser from '../../modules/parser';
 
 export default class About extends Component {
   render() {
-    return  parser `
+    return this.parser `
       <section class="root__section container">
         <div class="about">
           <picture>

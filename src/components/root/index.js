@@ -8,7 +8,6 @@ import './root.css';
 
 
 import Component from '../../modules/component';
-import parser from '../../modules/parser';
 
 import Header from '../header';
 import Footer from '../footer';
@@ -26,9 +25,7 @@ export default class Root extends Component {
 
   renderModal() {
     if (this.state.modalOpened) {
-      return parser `
-        <${Modal} store=${this.props.store} />
-      `;
+      return this.parser `<${Modal} />`;
     }
     return null;
   }
@@ -37,10 +34,10 @@ export default class Root extends Component {
     const overhangHeaderClass = this.props.overhangHeader ? 'container_overhang' : '';
     const modalOpenedClass = this.state.modalOpened ? 'root_expanded_modal' : '';
     const navExpandedClass = this.state.navOpened ? 'root_expanded_nav' : '';
-    return parser `
+    return this.parser `
       <div className=${`root ${modalOpenedClass} ${navExpandedClass}`}>
         <div className=${`container container_slim container_dashed ${overhangHeaderClass}`}>
-          <${Header} store=${this.props.store} pageName=${this.props.pageName} redirectOnSignout=${this.props.redirectOnSignout} />
+          <${Header} pageName=${this.props.pageName} redirectOnSignout=${this.props.redirectOnSignout} />
         </div>
         <main className="root__content">
           ${this.props.children}

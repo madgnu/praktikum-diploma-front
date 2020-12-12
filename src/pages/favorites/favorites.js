@@ -12,8 +12,10 @@ import initializeStore from '../common';
 const store = initializeStore('./', true);
 
 render(parser `
-  <${Root} store=${store} pageName="Сохраненные статьи" overhangHeader=${false} redirectOnSignout="./">
-    <${Overview} store=${store} />
-    <${SearchResults} store=${store} deleteUnfaved=${true} />
-  </${Root}>
+  <Provider.store value=${store}>
+    <${Root} pageName="Сохраненные статьи" overhangHeader=${false} redirectOnSignout="./">
+      <${Overview} />
+      <${SearchResults} deleteUnfaved=${true} />
+    </${Root}>
+  </Provider.store>
 `, document.querySelector('body'));
