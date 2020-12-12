@@ -1,4 +1,4 @@
-import { MODAL_CLOSE } from "./types";
+import { MODAL_CLOSE } from './types';
 
 const closeModal = () => {
   return {

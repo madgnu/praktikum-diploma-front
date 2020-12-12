@@ -1,4 +1,18 @@
 const dummy = `__DUMMY__${Date.now()}__`;
+const meta = `__META__${Date.now()}__`;
+
+const vDomTemplates = { };
+
+function djb2(str) {
+  let hash = 5381;
+  let i = str.length;
+
+  while(i) {
+    hash = (hash * 33) ^ str.charCodeAt(--i);
+  }
+
+  return hash >>> 0;
+}
 
 function tokenize(strToParse) {
   const chars = strToParse.split('');
@@ -24,7 +38,7 @@ function tokenize(strToParse) {
   return chunks.filter((e) => e.length).map((e) => e.trim());
 }
 
-function parseTag(tagStr, values) {
+function parseTag(tagStr) {
   let cleanedStr = tagStr.slice(1, -1);
   let closing = false;
   let selfClosing = false;
@@ -54,7 +68,6 @@ function parseTag(tagStr, values) {
   }
 
   let type = tagChunks.shift();
-  if (type === dummy) type = values.shift();
   const props = {};
 
   for (let i = 0; i < tagChunks.length; i++) {
@@ -63,13 +76,8 @@ function parseTag(tagStr, values) {
     if (el.indexOf('=') > -1) {
       [k, v] = el.split('=');
       if (v[0] === '"') v = v.slice(1, -1);
-      if (v === dummy) v = values.shift();
     } else if (el === dummy) {
-      const metaObj = values.shift();
-      const metaKeys = Object.keys(metaObj).map((el) => `${el}=${dummy}`);
-      const metaValues = Object.values(metaObj);
-      tagChunks.splice(i + 1, 0, ...metaKeys);
-      values.unshift(...metaValues);
+      props[`${meta}__${i}`] = true;
       continue;
     } else {
       k = el;
@@ -87,7 +95,7 @@ function parseTag(tagStr, values) {
   };
 }
 
-function buildVDOM(chunks, values) {
+function buildVDOM(chunks) {
   const root = {
     children: [],
   };
@@ -96,19 +104,9 @@ function buildVDOM(chunks, values) {
   while (chunks.length) {
     const chunk = chunks.shift();
     if (chunk[0] !== '<') {
-      if (chunk === dummy) {
-        const v = values.shift();
-        if (Array.isArray(v)) parent.children.push(...v);
-        else {
-          if (typeof(v) === 'object' && v && !v.type) {
-            parent.children.push(...v.children);
-          } else if (v) {
-            parent.children.push(v)
-          }
-        };
-      } else parent.children.push(chunk);
+      parent.children.push(chunk);
     } else {
-      const tag = parseTag(chunk, values);
+      const tag = parseTag(chunk);
       tag.parent = parent;
       if (!tag.closing) {
         if (tag.type) {
@@ -133,9 +131,58 @@ function buildVDOM(chunks, values) {
   return root.children[0];
 }
 
+function appendValues(vDomTemplate, values) {
+  if (vDomTemplate === dummy) return values.shift();
+
+  if (typeof vDomTemplate !== 'object') return vDomTemplate;
+
+  const ret = {
+    type: null,
+    props: {},
+    children: [],
+  };
+
+  ret.type = (vDomTemplate.type === dummy) ? values.shift() : vDomTemplate.type;
+
+  for (let [k ,v] of Object.entries(vDomTemplate.props)) {
+    if (k.substring(0, meta.length) === meta) {
+      ret.props = Object.assign(ret.props, values.shift());
+    } else {
+      if (k === dummy) k = values.shift();
+      if (v === dummy) v = values.shift();
+      ret.props[k] = v;
+    }
+  }
+
+   vDomTemplate.children.forEach((el) => {
+    if (el === dummy) {
+      const v = values.shift();
+      if (typeof v === 'object' && v && v.type === '') {
+        ret.children.push(...v.children);
+      } else if (Array.isArray(v)) {
+        ret.children.push(...v);
+      } else if (v) {
+        ret.children.push(v);
+      };
+    } else {
+      const child = appendValues(el, values);
+      if (child) ret.children.push(child);
+    }
+  });
+
+  return ret;
+}
+
 function parser(unparsedString, ...values) {
-  const chunks = tokenize(unparsedString.join(dummy));
-  return buildVDOM(chunks, values);
+  const joinedString = unparsedString.join(dummy);
+  const hash = djb2(joinedString);
+
+  if (!vDomTemplates.hasOwnProperty(hash)) {
+    const tokens = tokenize(joinedString);
+    vDomTemplates[hash] = buildVDOM(tokens);
+  }
+
+  return appendValues(vDomTemplates[hash], values);
 }
 
 export default parser;

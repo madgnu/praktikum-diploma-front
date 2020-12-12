@@ -1,4 +1,4 @@
-import { FAVORITE_ERROR, FAVORITE_REQUEST, FAVORITE_SUCCESS } from "./types";
+import { FAVORITE_ERROR, FAVORITE_REQUEST, FAVORITE_SUCCESS } from './types';
 
 const favoriteRequest = (key) => {
   return {
