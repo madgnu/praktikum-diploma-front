@@ -1,0 +1,22 @@
+.button.button_icon_loading::before {
+  content: ' ';
+  width: 1em;
+  height: 1em;
+  margin: auto 10px;
+  border: double 1px transparent;
+  background-image: linear-gradient(currentColor, currentColor), conic-gradient(rgba(209,210,214,0), #1a1b22);
+  border-radius: 50%;
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+	animation: icon-spin .75s infinite linear;
+}
+
+.button:disabled::before {
+  color: #E6E8EB;
+}
+
+@keyframes icon-spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}

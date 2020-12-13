@@ -10,3 +10,4 @@ import './_icon/button_icon_booked.css';
 import './_icon/button_icon_trash.css';
 import './_icon/button_icon_close.css';
 import './_icon/button_icon_smart-expander.css';
+import './_icon/button_icon_loading.css';

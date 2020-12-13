@@ -45,11 +45,12 @@ export default class Form extends Component {
 
   render() {
     const submitText = this.state.loading ? 'Загружаем...' : this.state.submitName;
+    const submitClassName = this.state.loading ? 'button_icon_loading' : '';
     const fieldsMarkup = this.state.fields.map((el) => this.renderField(el));
     return this.parser `
       <form name=${this.formName} className="modal__form form" action="/" onSubmit=${this.onSubmit}>
         ${fieldsMarkup}
-        <button type="submit" className="form__submit button" disabled=${this.state.loading}>${submitText}</button>
+        <button type="submit" className=${`form__submit button ${submitClassName}`} disabled=${this.state.loading}>${submitText}</button>
       </form>
     `;
   }
